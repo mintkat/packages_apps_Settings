@@ -1910,6 +1910,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 getActivity().getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE).edit()
                     .putBoolean(PREF_SHOW, true)
                     .apply();
+            } else {
+                // Reset the toggle
+                mSwitchBar.setChecked(false);
             }
         } else if (dialog == mRootDialog) {
             if (which == DialogInterface.BUTTON_POSITIVE) {
