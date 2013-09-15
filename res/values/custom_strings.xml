@@ -810,4 +810,7 @@
     <string name="qs_tile_piecontrol">Pie Control</string>
 
 
+    <!-- Restart SystemUI -->
+    <string name="restart_systemui">Restart SystemUI</string>
+
 </resources>
