@@ -839,6 +839,9 @@
         <activity
              android:name=".xd.themes.ThemeSettings" />
 
+        <!-- SystemApp Remover -->
+        <activity android:name="com.android.settings.xd.fragments.SystemappRemover" />
+
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".applications.InstalledAppDetails"
                 android:label="@string/application_info_label"

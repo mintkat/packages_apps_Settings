@@ -31,6 +31,13 @@
         android:summary="@string/slim_action_floating_window_summary"
         android:defaultValue="false" />
 
+   <!-- SlimSizer -->
+   <PreferenceScreen
+       android:key="system_app_remover"
+       android:title="@string/system_app_remover"
+       android:summary="@string/systemappremover_summary"
+       android:fragment="com.android.settings.xd.fragments.SystemappRemover" />
+
    <!-- Three-fingers-swipe to screenshot -->
    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="three_finger_gesture"
