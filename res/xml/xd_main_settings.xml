@@ -20,6 +20,13 @@
                  android:targetClass="org.adaway.ui.BaseActivity" />
         </Preference>
 
+        <!-- App sidebar -->
+        <PreferenceScreen
+            android:key="app_sidebar"
+            android:fragment="com.android.settings.xd.AppSidebar"
+            android:title="@string/app_sidebar_title"
+	    android:icon="@drawable/ic_settings_sidebar_teal" />
+
         <!-- Equalizer -->
         <Preference
             android:id="@+id/equalizer_settings"
