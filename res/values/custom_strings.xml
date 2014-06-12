@@ -983,4 +983,8 @@
     <!-- Battery -->
     <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
 
+    <!-- Extra Info -->
+    <string name="lsextrainfo">Extra information</string>
+    <string name="lsextrainfo_summary">Display extra info for cpu, display, etc</string>
+
 </resources>
