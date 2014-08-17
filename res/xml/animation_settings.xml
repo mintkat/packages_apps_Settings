@@ -47,6 +47,12 @@
         android:entryValues="@array/listview_interpolator_values"
         android:defaultValue="0" />
 
+    <PreferenceScreen
+	android:key="overscroll_effects"
+	android:title="@string/ui_overscroll_title"
+	android:summary="@string/overscroll_weight_summary"
+	android:fragment="com.android.settings.xd.OverscrollEffects" /> 
+
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="disable_transition_animations"
         android:title="@string/disable_animations"
