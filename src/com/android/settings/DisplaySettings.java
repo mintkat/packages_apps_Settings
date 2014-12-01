@@ -98,6 +98,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
+    private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
 
     private static final String KEY_TOUCH_CONTROL_SETTINGS = "touch_control_settings";
     private static final String KEY_TOUCH_CONTROL_PACKAGE_NAME = "com.mahdi.touchcontrol";
@@ -195,6 +196,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 displayPrefs.removePreference(mAutoBrightnessPreference);
                 mAutoBrightnessPreference = null;
             }
+        }
+
+        boolean proximityCheckOnWait = getResources().getBoolean(
+                com.android.internal.R.bool.config_proximityCheckOnWake);
+        if (!proximityCheckOnWait) {
+            displayPrefs.removePreference(findPreference(KEY_PROXIMITY_WAKE));
+            Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 0);
         }
 
         mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
@@ -632,6 +640,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     if (!context.getResources().getBoolean(
                             com.android.internal.R.bool.config_intrusiveBatteryLed)) {
                         result.add(KEY_BATTERY_LIGHT);
+                    }
+                    if (!context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_proximityCheckOnWake)) {
+                        result.add(KEY_PROXIMITY_WAKE);
                     }
                     if (!cmHardwareManager.isSupported(FEATURE_TAP_TO_WAKE)) {
                         result.add(KEY_TAP_TO_WAKE);

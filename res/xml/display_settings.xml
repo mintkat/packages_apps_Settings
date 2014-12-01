@@ -50,6 +50,13 @@
                 android:title="@string/lift_to_wake_title"
                 android:persistent="false" />
 
+        <!-- Proximity check before wake -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="proximity_on_wake"
+                android:title="@string/proximity_wake_title"
+                android:summary="@string/proximity_wake_summary"
+                android:defaultValue="false" />
+
         <!-- Double tap to wake -->
         <SwitchPreference
                 android:key="double_tap_wake_gesture"
