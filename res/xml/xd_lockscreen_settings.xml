@@ -24,6 +24,31 @@
 
     <PreferenceCategory
         android:key="locksystem_category"
+        android:title="@string/lockscreen_shortcuts_category">
+
+        <PreferenceScreen
+                 android:key="lockscreen_shortcuts"
+                 android:fragment="com.android.settings.slim.dslv.ActionListViewSettings"
+                 android:summary="@string/lockscreen_shortcuts_top_summary"
+                 android:title="@string/lockscreen_shortcuts_top_title">
+             <extra android:name="actionMode" android:value="4" />
+             <extra android:name="maxAllowedActions" android:value="5" />
+             <extra android:name="disableLongpress" android:value="true" />
+             <extra android:name="useAppPickerOnly" android:value="true" />
+             <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutFragment" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="lockscreen_shortcuts_settings"
+            android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
+            android:title="@string/lockscreen_shortcuts_bottom_title"
+            android:summary="@string/lockscreen_shortcuts_bottom_summary"
+            settings:advanced="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="locksystem_category"
         android:title="@string/system_category_xd">
 
         <PreferenceScreen
@@ -35,17 +60,11 @@
                     android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
         </PreferenceScreen>  
 
-        <PreferenceScreen
-             android:key="lockscreen_shortcuts_settings"
-             android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
-             android:summary="@string/lockscreen_shortcuts_summary"
-             android:title="@string/lockscreen_targets_message" />>
-
-         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-             android:key="double_tap_sleep_anywhere"
-             android:title="@string/double_tap_sleep_anywhere_title"
-             android:summary="@string/double_tap_sleep_anywhere_summary"
-             settings:advanced="true"/>
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="double_tap_sleep_anywhere"
+            android:title="@string/double_tap_sleep_anywhere_title"
+            android:summary="@string/double_tap_sleep_anywhere_summary"
+            settings:advanced="true"/>
 
     </PreferenceCategory>
 
