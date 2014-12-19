@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2012-2015 The CyanogenMod Project
+     Copyright (C) 2012-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -19,5 +19,26 @@
     <!-- Themes Settings -->
     <!-- Settings main menu entry -->
     <string name="themes_settings_title">Themes</string>
+
+    <!-- Button dashboard title -->
+    <string name="button_pref_title">Buttons</string>
+    <string name="hardware_keys_power_key_title">Power button</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Advanced reboot</string>
+    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
+
+    <!-- Power menu -->
+    <string name="power_menu_title">Power menu</string>
+    <string name="power_menu_power_title">Power off</string>
+    <string name="power_menu_reboot_title">Reboot menu</string>
+    <string name="power_menu_screenshot_title">Screenshot</string>
+    <string name="power_menu_airplane_title">Airplane mode</string>
+    <string name="power_menu_users_title">User switcher</string>
+    <string name="power_menu_settings_title">Settings shortcut</string>
+    <string name="power_menu_lockdown_title">Device lockdown</string>
+    <string name="power_menu_bug_report_title">Bug report</string>
+    <string name="power_menu_sound_title">Sound panel</string>
+    <string name="power_menu_bug_report_disabled">Bug reporting is disabled in development settings</string>
 
 </resources>
