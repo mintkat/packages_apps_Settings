@@ -120,16 +120,28 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="interface"
-        android:title="@string/category_interface">
+        android:key="category_doze_options"
+        android:title="@string/display_category_doze_options_title" >
 
-        <!-- Doze // Ambient display -->
+
+        <!-- Doze // Ambient display -->s
         <SwitchPreference
                 android:key="doze"
                 android:title="@string/doze_title"
                 android:summary="@string/doze_summary"
-                android:persistent="false"
-                settings:advanced="false"/>
+                android:persistent="false" />
+
+        <PreferenceScreen
+                android:fragment="com.android.settings.slim.fragments.DozeSettingsFragment"
+                android:key="advanced_doze_options"
+                android:title="@string/doze_settings_title"
+                android:dependency="doze" />
+
+         </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="interface"
+        android:title="@string/category_interface">
 
         <!-- expanded desktop -->
         <PreferenceScreen
