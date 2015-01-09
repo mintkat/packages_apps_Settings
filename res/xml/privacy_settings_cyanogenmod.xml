@@ -29,4 +29,14 @@
             android:summary="@string/blacklist_summary"
             android:fragment="com.android.settings.blacklist.BlacklistSettings" />
 
+        <PreferenceScreen
+            android:key="key_dns_crypt"
+            android:title="@string/dns_enc_title"
+            android:summary="@string/dns_enc_summary">
+            <intent
+                android:action="com.android.settings.action.ACTION_DNSCRYPT_SETTINGS"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.dnscrypt.DnsCryptPreferenceActivity" />
+        </PreferenceScreen>
+
 </PreferenceScreen>
