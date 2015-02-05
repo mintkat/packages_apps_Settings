@@ -222,6 +222,7 @@
     <string name="qs_tile_navbar">Navigation Bar</string>
     <string name="qs_main_tiles_summary_off_eos">Three or four tiles on each row</string>
     <string name="qs_tile_themes">Themes</string>
+    <string name="qs_screenrecord_tile">Screen Record</string>
 
     <!-- Quick Settings block on keyguard -->
     <string name="block_on_secure_keyguard_title">Disable on lock screen</string>
