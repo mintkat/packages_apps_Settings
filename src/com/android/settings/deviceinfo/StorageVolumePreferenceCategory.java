@@ -35,9 +35,12 @@ import android.os.RemoteException;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
 
@@ -52,9 +55,11 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StorageVolumePreferenceCategory extends PreferenceCategory
-    implements OnRequestMediaRescanListener, OnScanCompletedListener {
+    implements OnRequestMediaRescanListener, OnPreferenceClickListener, OnScanCompletedListener {
 
     public static final String TAG = "StorageVolumePreferenceCategory";
 
@@ -78,6 +83,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
     private Preference mMountTogglePreference;
     private Preference mFormatPreference;
     private Preference mStorageLow;
+    private CheckBoxPreference mMountNotification;
 
     private StorageItemPreference mItemTotal;
     private StorageItemPreference mItemAvailable;
@@ -229,10 +235,29 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
         final boolean isRemovable = mVolume != null ? mVolume.isRemovable() : false;
         // Always create the preference since many code rely on it existing
         mMountTogglePreference = new Preference(context);
+        mMountNotification = new CheckBoxPreference(context);
         if (isRemovable) {
             mMountTogglePreference.setTitle(R.string.sd_eject);
             mMountTogglePreference.setSummary(R.string.sd_eject_summary);
             addPreference(mMountTogglePreference);
+
+
+            mMountNotification.setTitle(R.string.mount_notification_title);
+            mMountNotification.setSummary(R.string.mount_notification_summary);
+            String volumePath = mVolume.getPath();
+            String notificationConfig = android.provider.Settings.System.getString(getContext().getContentResolver(),
+                    android.provider.Settings.System.STORAGE_MOUNT_NOTIFICATION);
+            boolean checked = false;
+            if (notificationConfig != null && notificationConfig.length() != 0) {
+                String[] pathArray = notificationConfig.split("\\|\\|");
+                if (Arrays.asList(pathArray).contains(volumePath)) {
+                    checked = true;
+                }
+            }
+            mMountNotification.setChecked(checked);
+            mMountNotification.setOnPreferenceClickListener(this);
+            addPreference(mMountNotification);
+
         }
 
         final boolean allowFormat = mVolume != null;
@@ -532,5 +557,38 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
         } else {
             mUpdateHandler.obtainMessage(MSG_UI_RESCAN_COMPLETE).sendToTarget();
         }
+    }
+
+    public boolean onPreferenceClick(Preference preference) {
+        if (preference == mMountNotification) {
+            boolean checked = ((CheckBoxPreference)preference).isChecked();
+
+            String volumePath = mVolume.getPath();
+            String notificationConfig = android.provider.Settings.System.getString(getContext().getContentResolver(),
+                    android.provider.Settings.System.STORAGE_MOUNT_NOTIFICATION);
+            List<String> pathList = new ArrayList<String>();
+            if (notificationConfig != null) {
+                String[] pathArray = notificationConfig.split("\\|\\|");
+                pathList.addAll(Arrays.asList(pathArray));
+            }
+            if (checked) {
+                if (!pathList.contains(volumePath)) {
+                    pathList.add(volumePath);
+                }
+            } else {
+                if (pathList.contains(volumePath)) {
+                    pathList.remove(volumePath);
+                }
+            }
+            if (pathList.size() != 0) {
+                notificationConfig = TextUtils.join("||", pathList);
+            } else {
+                notificationConfig = null;
+            }
+            android.provider.Settings.System.putString(getContext().getContentResolver(),
+                    android.provider.Settings.System.STORAGE_MOUNT_NOTIFICATION, notificationConfig);
+            return true;
+        }
+        return false;
     }
 }
