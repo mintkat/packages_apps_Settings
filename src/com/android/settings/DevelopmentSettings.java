@@ -315,6 +315,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.development_prefs);
 
         mAdvancedSettings = (SecureSettingSwitchPreference) findPreference(KEY_ADVANCED_MODE);
+        // If enabled by default, just remove the setting, because it's confusing.
+        removePreferenceIfBoolFalse(KEY_ADVANCED_MODE, !getResources().getBoolean(
+                com.android.internal.R.bool.config_advancedSettingsMode));
 
         final PreferenceGroup debugDebuggingCategory = (PreferenceGroup)
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);
@@ -528,6 +531,15 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             pref.setEnabled(enabled && !mDisabledPrefs.contains(pref));
         }
         updateAllOptions();
+    }
+
+    private void removePreferenceIfBoolFalse(String preference, boolean bool) {
+        if (!bool) {
+            Preference pref = findPreference(preference);
+            if (pref != null) {
+                getPreferenceScreen().removePreference(pref);
+            }
+        }
     }
 
     @Override
