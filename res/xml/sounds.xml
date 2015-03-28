@@ -96,6 +96,14 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.OtherSoundSettings" />
 
+         <!-- Camera shutter sound -->
+         <SwitchPreference
+                android:key="camera_sounds"
+                android:title="@string/camera_sounds_title"
+                android:switchTextOff=""
+                android:switchTextOn=""
+                android:persistent="false" />
+
         <!-- Headset -->
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                 android:key="headset_connect_player"

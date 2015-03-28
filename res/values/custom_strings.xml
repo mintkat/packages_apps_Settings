@@ -894,4 +894,8 @@
     <string name="media_scanner_on_boot_enabled">Scan media</string>
     <string name="media_scanner_on_boot_ask">Ask to scan (notification)</string>
     <string name="media_scanner_on_boot_disabled">Do not scan media</string>
+
+    <!-- Disable Camera Shutter Sound -->
+    <string name="camera_sounds_title">Camera shutter sound</string>
+
 </resources>
