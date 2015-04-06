@@ -27,7 +27,7 @@
     <string name="button_settings_title">Кнопки</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Версія Euphoria</string>
+    <string name="mod_version_benzo">Версія Benzo</string>
     <string name="mod_version_default">Невідомо</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Дата збирання</string>

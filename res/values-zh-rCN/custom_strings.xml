@@ -27,7 +27,7 @@
     <string name="button_settings_title">按键</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Euphoria 版本</string>
+    <string name="mod_version_benzo">Benzo 版本</string>
     <string name="mod_version_default">未知</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">编译日期</string>

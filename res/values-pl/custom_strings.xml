@@ -27,7 +27,7 @@
     <string name="button_settings_title">Przyciski</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Wersja Euphoria-OS</string>
+    <string name="mod_version_benzo">EWersja Benzo</string>
     <string name="mod_version_default">Nieznane</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Data kompilacji</string>

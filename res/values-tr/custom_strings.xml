@@ -27,7 +27,7 @@
     <string name="button_settings_title">Tuşlar</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version">Euphoria versiyonu</string>
+    <string name="mod_version_benzo">Benzo versiyonu</string>
     <string name="mod_version_default">Bilinmeyen</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">İnşa tarihi</string>

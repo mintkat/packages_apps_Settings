@@ -127,8 +127,9 @@
         <!-- Mod version -->
         <Preference android:key="mod_version"
                 style="?android:preferenceInformationStyle"
-                android:title="@string/mod_version_eos"
-                android:summary="@string/mod_version_default" />
+                android:title="@string/mod_version_benzo"
+                android:summary="@string/mod_version_default"
+                android:selectable="false" />
 
         <!-- Device Kernel version -->
         <Preference android:key="kernel_version" 

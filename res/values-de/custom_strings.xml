@@ -26,7 +26,7 @@
     <string name="button_settings_title">Tasten</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Euphoria-Version</string>
+    <string name="mod_version_benzo">Benzo-Version</string>
     <string name="mod_version_default">Unbekannt</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Build-Datum</string>

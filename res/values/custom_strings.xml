@@ -95,7 +95,7 @@
     <string name="button_settings_title">Buttons</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Benzo version</string>
+    <string name="mod_version_benzo">Benzo version</string>
     <string name="mod_version_default">Unknown</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Build date</string>

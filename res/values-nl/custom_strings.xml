@@ -25,7 +25,7 @@
     <string name="button_settings_title">Knoppen</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Euphoria versie</string>
+    <string name="mod_version_benzo">Benzo versie</string>
     <string name="mod_version_default">Onbekend</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Build datum</string>

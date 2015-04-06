@@ -27,7 +27,7 @@
     <string name="button_settings_title">Pulsanti</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Versione Euphoria</string>
+    <string name="mod_version_benzo">Versione Benzo</string>
     <string name="mod_version_default">Sconosciuta</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Data della build</string>
