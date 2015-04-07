@@ -57,6 +57,12 @@
             android:fragment="com.android.settings.euphoria.animation.AnimationSettings"
             android:icon="@drawable/ic_xd_animation_teal" />
 
+        <!-- Gesture anywhere -->
+        <PreferenceScreen
+            android:key="gesture_anywhere"
+            android:fragment="com.android.settings.xd.gestureanywhere.GestureAnywhereSettings"
+            android:title="@string/gesture_anywhere_title"
+	    android:icon="@drawable/ic_xd_gesture_teal" />
 
         <!-- Launcher -->
         <PreferenceScreen

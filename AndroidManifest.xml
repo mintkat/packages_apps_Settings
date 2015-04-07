@@ -803,6 +803,9 @@
         <activity
              android:name=".xd.MainSettings" />
 
+        <activity android:name=".xd.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".xd.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
+
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".applications.InstalledAppDetails"
                 android:label="@string/application_info_label"

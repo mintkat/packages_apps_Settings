@@ -17,6 +17,9 @@
 <resources>
     <color name="floating_action_button_touch_tint">#80ffffff</color>
 
+    <!-- Gesture Anywhere -->
+    <color name="ga_gesture_color">@android:color/holo_blue_light</color>
+
     <drawable name="expanded_item_bg_activated">#ffEEEEEE</drawable>
     <drawable name="expanded_item_bg">@android:color/background_light</drawable>
     <color name="qs_tile_tint_color">#FF009587</color>
