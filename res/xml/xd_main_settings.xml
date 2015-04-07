@@ -20,6 +20,13 @@
                  android:targetClass="org.adaway.ui.BaseActivity" />
         </Preference>
 
+        <!-- Circle app bar -->
+        <PreferenceScreen
+            android:key="app_circle_bar"
+            android:fragment="com.android.settings.xd.AppCircleBar"
+            android:title="@string/app_circle_bar_title"
+            android:icon="@drawable/ic_xd_appcircle_teal"/>
+
         <!-- App sidebar -->
         <PreferenceScreen
             android:key="app_sidebar"
