@@ -1285,4 +1285,8 @@
     <string name="developer_options_reset_title">Reset Developer Options</string>
     <string name="developer_options_reset_message">Are you sure you want to reset ALL these settings to default?</string>
 
+    <!-- Chamber of Secrets -->
+    <string name="chamber_title">Chamber of secrets</string>
+    <string name="chamber_toast">The chamber of secrets has opened</string>
+
 </resources>
