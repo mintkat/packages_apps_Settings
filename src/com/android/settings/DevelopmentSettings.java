@@ -201,12 +201,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     SecureSettingSwitchPreference mAdvancedSettings;
 
-    private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
-
-    private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
-
-    private static final String SCROLLINGCACHE_DEFAULT = "1";
-
     private IWindowManager mWindowManager;
     private IBackupManager mBackupManager;
     private DevicePolicyManager mDpm;
@@ -419,11 +413,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mWifiAggressiveHandover = findAndInitSwitchPref(WIFI_AGGRESSIVE_HANDOVER_KEY);
         mWifiAllowScansWithTraffic = findAndInitSwitchPref(WIFI_ALLOW_SCAN_WITH_TRAFFIC_KEY);
         mLogdSize = addListPreference(SELECT_LOGD_SIZE_KEY);
-
-        mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
-        mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
-                SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
-        mScrollingCachePref.setOnPreferenceChangeListener(this);
 
         mOverlayDisplayDevices = addListPreference(OVERLAY_DISPLAY_DEVICES_KEY);
         mOpenGLTraces = addListPreference(OPENGL_TRACES_KEY);
@@ -1848,11 +1837,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             return true;
         } else if (preference == mKillAppLongpressDelay) {
             writeAnimationScaleOption(3, mKillAppLongpressDelay, newValue);
-            return true;
-        } else if (preference == mScrollingCachePref) {
-            if (newValue != null) {
-                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String) newValue);
-            }
             return true;
         } else if (preference == mRootAccess) {
             if ("0".equals(SystemProperties.get(ROOT_ACCESS_PROPERTY, "0"))
