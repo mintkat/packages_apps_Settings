@@ -788,7 +788,7 @@
                   android:parentActivityName="Settings$ManageApplicationsActivity">
         </activity>
 
-        <!-- XD Extensions -->
+        <!-- Benzo Extras -->
         <activity android:name="Settings$MainSettingsActivity"
             android:label="@string/xd_settings_title"
             android:taskAffinity="">
@@ -807,6 +807,9 @@
         <activity android:name=".xd.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
 
 	<activity android:name=".xd.Density" />
+
+    	<!-- Benzo OTA Update -->
+		<activity android:name="com.benzo.ota.activities.MainActivity" />
 
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".applications.InstalledAppDetails"

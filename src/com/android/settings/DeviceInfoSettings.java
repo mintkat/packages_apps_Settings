@@ -90,7 +90,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SM_FLAGS = "sm_flags";
 
     private static final String KEY_UPDATE_SETTINGS = "update_settings";
-    private static final String KEY_UPDATE_SETTINGS_PACKAGE_NAME = "com.euphoria.ota";
+    private static final String KEY_UPDATE_SETTINGS_PACKAGE_NAME = "com.benzo.ota";
 
     private PreferenceScreen mUpdateSettings;
 

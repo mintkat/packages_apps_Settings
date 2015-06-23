@@ -22,9 +22,10 @@
                 android:key="update_settings"
                 android:title="@string/updater_title"
                 android:summary="@string/updater_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.euphoria.ota"
-                    android:targetClass="com.euphoria.center.OTACenter" />
+                <intent
+                    android:action="android.intent.action.MAIN"
+    		        android:targetPackage="com.benzo.ota"
+                    android:targetClass="com.benzo.ota.activities.MainActivity" />
         </PreferenceScreen>
 
         <!-- Changelog -->
