@@ -32,4 +32,11 @@
         android:entryValues="@array/torch_screen_off_delay_values"
         android:dependency="disable_torch_on_screen_off" />
 
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="slim_action_floats"
+        android:title="@string/slim_action_floating_window_title"
+        android:summary="@string/slim_action_floating_window_summary"
+        android:dependency="recent_panel"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
