@@ -339,6 +339,10 @@
     <!-- Heads up snooze -->
     <string name="heads_up_snooze_title">Snooze timer</string>
 
+    <!-- Heads Up Floating Mode -->
+    <string name="heads_up_floating_window_title">Float mode</string>
+    <string name="heads_up_floating_window_summary">Longpress and release to open in float mode when not on home screen</string>   
+
     <!-- Superuser indicator-->
     <string name="su_indicator">Superuser indicator</string>
     <string name="su_indicator_summary">Show superuser indicator when a session is active</string>

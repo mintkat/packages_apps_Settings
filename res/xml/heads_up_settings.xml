@@ -20,6 +20,14 @@
         android:summary="@string/show_headsup_button_summary"
         android:defaultValue="false" />
 
+    <!-- HeadsUp floating mode switch -->
+    <SwitchPreference
+        android:key="heads_up_floating"
+        android:title="@string/heads_up_floating_window_title"
+        android:summary="@string/heads_up_floating_window_summary"
+        android:persistent="false"
+        android:defaultValue="false" />
+
     <com.android.settings.euphoria.SeekBarPreference
         android:key="heads_up_time_out"
         android:title="@string/heads_up_time_out_title"
