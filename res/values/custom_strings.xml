@@ -649,7 +649,9 @@
     <string name="trigger_top_summary">Adjust the vertical postion of the trigger area</string>
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
- 
+    <string name="appsidebar_float_mode_title">Floating Mode</string>
+    <string name="appsidebar_float_mode_summary">Launch apps in floating window</string>
+
     <!-- Circle app bar -->
     <string name="category_app_circle_bar_title">App launcher</string>
     <string name="app_circle_bar_title">App circle bar</string>

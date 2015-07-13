@@ -41,6 +41,13 @@
         android:defaultValue="0"
         android:dependency="sidebar_enable" />
 
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="appsidebar_floating"
+        android:title="@string/appsidebar_float_mode_title"
+        android:summary="@string/appsidebar_float_mode_summary"
+        android:defaultValue="false"
+        android:dependency="sidebar_enable" />
+
     <CheckBoxPreference
         android:key="sidebar_hide_labels"
         android:title="@string/app_sidebar_hide_labels_title"
