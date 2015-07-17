@@ -66,6 +66,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String DIM_NAV_BUTTONS_ALPHA = "dim_nav_buttons_alpha";
     private static final String DIM_NAV_BUTTONS_ANIMATE = "dim_nav_buttons_animate";
     private static final String DIM_NAV_BUTTONS_ANIMATE_DURATION = "dim_nav_buttons_animate_duration";
+    private static final String DIM_NAV_BUTTONS_TOUCH_ANYWHERE = "dim_nav_buttons_touch_anywhere";
 
     private SwitchPreference mNavbarLeft;
     private SwitchPreference mPowerEndCall;
@@ -81,6 +82,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SlimSeekBarPreference mDimNavButtonsAlpha;
     private SwitchPreference mDimNavButtonsAnimate;
     private SlimSeekBarPreference mDimNavButtonsAnimateDuration;
+    private SwitchPreference mDimNavButtonsTouchAnywhere;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -109,6 +111,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // SlimDim
         mDimNavButtons = (SwitchPreference) findPreference(DIM_NAV_BUTTONS);
         mDimNavButtons.setOnPreferenceChangeListener(this);
+
+        mDimNavButtonsTouchAnywhere = (SwitchPreference) findPreference(DIM_NAV_BUTTONS_TOUCH_ANYWHERE);
+        mDimNavButtonsTouchAnywhere.setOnPreferenceChangeListener(this);
 
         mDimNavButtonsTimeout = (SlimSeekBarPreference) findPreference(DIM_NAV_BUTTONS_TIMEOUT);
         mDimNavButtonsTimeout.setDefault(3000);
@@ -211,6 +216,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.DIM_NAV_BUTTONS, 0) == 1);
         }
 
+        if (mDimNavButtonsTouchAnywhere != null) {
+            mDimNavButtonsTouchAnywhere.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE, 0) == 1);
+        }
+
         if (mDimNavButtonsTimeout != null) {
             final int dimTimeout = Settings.System.getInt(getContentResolver(),
                     Settings.System.DIM_NAV_BUTTONS_TIMEOUT, 3000);
@@ -241,6 +251,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private void updateNavbarPreferences(boolean show) {
         mDimNavButtons.setEnabled(show);
+        mDimNavButtonsTouchAnywhere.setEnabled(show);
         mDimNavButtonsTimeout.setEnabled(show);
         mDimNavButtonsAlpha.setEnabled(show);
         mDimNavButtonsAnimate.setEnabled(show);
@@ -292,6 +303,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else if (preference == mDimNavButtons) {
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS,
+                    ((Boolean) newValue) ? 1 : 0);
+            return true;
+        } else if (preference == mDimNavButtonsTouchAnywhere) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE,
                     ((Boolean) newValue) ? 1 : 0);
             return true;
         } else if (preference == mDimNavButtonsTimeout) {
