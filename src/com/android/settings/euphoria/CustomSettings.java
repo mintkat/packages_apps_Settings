@@ -47,12 +47,6 @@ import java.util.List;
 public class CustomSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener, Indexable  {
 
-    private static final String DISABLE_TORCH_ON_SCREEN_OFF = "disable_torch_on_screen_off";
-    private static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
-
-    private SwitchPreference mTorchOff;
-    private ListPreference mTorchOffDelay;
-
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -60,19 +54,6 @@ public class CustomSettings extends SettingsPreferenceFragment
         ContentResolver resolver = getActivity().getContentResolver();
         Activity activity = getActivity();
         PreferenceScreen prefSet = getPreferenceScreen();
-
-        mTorchOff = (SwitchPreference) prefSet.findPreference(DISABLE_TORCH_ON_SCREEN_OFF);
-        mTorchOffDelay = (ListPreference) prefSet.findPreference(DISABLE_TORCH_ON_SCREEN_OFF_DELAY);
-        int torchOffDelay = Settings.System.getInt(resolver,
-                Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, 10);
-        mTorchOffDelay.setValue(String.valueOf(torchOffDelay));
-        mTorchOffDelay.setSummary(mTorchOffDelay.getEntry());
-        mTorchOffDelay.setOnPreferenceChangeListener(this);
-
-        if (!QSUtils.deviceSupportsFlashLight(activity)) {
-            prefSet.removePreference(mTorchOff);
-            prefSet.removePreference(mTorchOffDelay);
-        }
     }
 
     @Override
@@ -82,15 +63,6 @@ public class CustomSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mTorchOffDelay) {
-            int torchOffDelay = Integer.valueOf((String) newValue);
-            int index = mTorchOffDelay.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, torchOffDelay);
-            mTorchOffDelay.setSummary(mTorchOffDelay.getEntries()[index]);
-            return true;
-        }
         return false;
     }
 

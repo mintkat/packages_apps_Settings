@@ -26,19 +26,6 @@
         android:summary="@string/battery_bar_summary" />
 
    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="disable_torch_on_screen_off"
-        android:title="@string/disable_torch_screen_off_title"
-        android:defaultValue="false" />
-
-   <ListPreference
-        android:key="disable_torch_on_screen_off_delay"
-        android:title="@string/disable_torch_screen_off_delay_title"
-        android:dialogTitle="@string/disable_torch_screen_off_delay_title"
-        android:entries="@array/torch_screen_off_delay_entries"
-        android:entryValues="@array/torch_screen_off_delay_values"
-        android:dependency="disable_torch_on_screen_off" />
-
-   <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="slim_action_floats"
         android:title="@string/slim_action_floating_window_title"
         android:summary="@string/slim_action_floating_window_summary"

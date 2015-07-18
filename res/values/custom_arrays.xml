@@ -380,8 +380,6 @@
         <item>@string/torch_screen_off_ten_second</item>
         <item>@string/torch_screen_off_thirty_second</item>
         <item>@string/torch_screen_off_one_minute</item>
-        <item>@string/torch_screen_off_five_minutes</item>
-        <item>@string/torch_screen_off_ten_minutes</item>
     </string-array>
 
     <string-array name="torch_screen_off_delay_values" translatable="false">

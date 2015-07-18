@@ -73,6 +73,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.internal.util.cm.QSUtils;
+
 import com.android.settings.cyanogenmod.DisplayRotation;
 
 import com.android.settings.Utils;
@@ -89,6 +91,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_CATEGORY_LIGHTS = "lights";
     private static final String KEY_CATEGORY_DISPLAY = "display";
     private static final String KEY_CATEGORY_INTERFACE = "interface";
+    private static final String KEY_CATEGORY_TORCH = "torch";
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
@@ -110,6 +113,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE_CATEGORY = "category_doze_options";
     private static final String KEY_DOZE = "doze";
     private static final String KEY_ADVANCED_DOZE_OPTIONS = "advanced_doze_options";
+
+    private static final String DISABLE_TORCH_ON_SCREEN_OFF = "disable_torch_on_screen_off";
+    private static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -136,6 +142,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private CMHardwareManager mHardware;
 
+    private SwitchPreference mTorchOff;
+    private ListPreference mTorchOffDelay;
+
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
         @Override
@@ -158,6 +167,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
         mHardware = CMHardwareManager.getInstance(activity);
 
         addPreferencesFromResource(R.xml.display_settings);
@@ -166,6 +176,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 findPreference(KEY_CATEGORY_DISPLAY);
         PreferenceCategory interfacePrefs = (PreferenceCategory)
                 findPreference(KEY_CATEGORY_INTERFACE);
+        PreferenceCategory torchPrefs = (PreferenceCategory)
+                findPreference(KEY_CATEGORY_TORCH);
 
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
         mAccelerometer = (SwitchPreference) findPreference(DisplayRotation.KEY_ACCELEROMETER);
@@ -252,6 +264,21 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         initPulse((PreferenceCategory) findPreference(KEY_CATEGORY_LIGHTS));
+
+        if (torchPrefs != null && !QSUtils.deviceSupportsFlashLight(activity)) {
+            getPreferenceScreen().removePreference(torchPrefs);
+        }
+        mTorchOff = (SwitchPreference)
+                findPreference(DISABLE_TORCH_ON_SCREEN_OFF);
+        mTorchOffDelay = (ListPreference)
+                findPreference(DISABLE_TORCH_ON_SCREEN_OFF_DELAY);
+        if (mTorchOffDelay != null) {
+            int torchOffDelay = Settings.System.getInt(resolver,
+                    Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, 10);
+            mTorchOffDelay.setValue(String.valueOf(torchOffDelay));
+            mTorchOffDelay.setSummary(mTorchOffDelay.getEntry());
+            mTorchOffDelay.setOnPreferenceChangeListener(this);
+        }
     }
 
     private void updateAccelerometerRotationSwitch() {
@@ -574,6 +601,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE,
                     value ? 1 : 0);
         }
+        if (preference == mTorchOffDelay) {
+            int torchOffDelay = Integer.valueOf((String) objValue);
+            int index = mTorchOffDelay.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, torchOffDelay);
+            mTorchOffDelay.setSummary(mTorchOffDelay.getEntries()[index]);
+        }
         return true;
     }
 
@@ -654,6 +688,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
                         result.add(KEY_ADVANCED_DOZE_OPTIONS);
+                    }
+                    if (!QSUtils.deviceSupportsFlashLight(context)) {
+                        result.add(DISABLE_TORCH_ON_SCREEN_OFF);
+                        result.add(DISABLE_TORCH_ON_SCREEN_OFF_DELAY);
                     }
                     return result;
                 }

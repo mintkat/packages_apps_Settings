@@ -266,7 +266,6 @@ public class SettingsActivity extends Activity
             R.id.home_settings,
             R.id.dashboard,
             R.id.privacy_settings_cyanogenmod,
-            R.id.custom_settings,
             R.id.status_bar_settings,
             R.id.notification_drawer_settings,
             R.id.theme_settings,
