@@ -792,5 +792,7 @@
     <string name="pa_pie_juice_title">Battery Juice Color</string>
     <string name="pa_pie_button_color">Button Color</string>
     <string name="pa_pie_button_color_title">Buttons Color</string>
+    <string name="qs_tile_piecontrol">Pie Control</string>
+
 
 </resources>

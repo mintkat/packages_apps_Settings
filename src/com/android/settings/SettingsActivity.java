@@ -101,6 +101,7 @@ import com.android.settings.lockscreen.LockScreenSettings;
 import com.android.settings.notification.NotificationAppList;
 import com.android.settings.notification.NotificationManagerSettings;
 import com.android.settings.notification.OtherSoundSettings;
+import com.android.settings.paranoid.PieControl;
 import com.android.settings.profiles.NFCProfileTagCallback;
 import com.android.settings.profiles.ProfilesSettings;
 import com.android.settings.quicklaunch.QuickLaunchSettings;
@@ -348,7 +349,8 @@ public class SettingsActivity extends Activity
             NotificationManagerSettings.class.getName(),
             LockScreenSettings.class.getName(),
             DisplayRotation.class.getName(),
-            MainSettings.class.getName()
+            MainSettings.class.getName(),
+            PieControl.class.getName()
     };
 
 

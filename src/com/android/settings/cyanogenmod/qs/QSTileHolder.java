@@ -201,7 +201,10 @@ public class QSTileHolder {
                 resourceName = "ic_dynamic_qs_adb";
                 stringId = R.string.qs_dynamic_tile_adb;
                 break;
-
+            case QSConstants.TILE_PIECONTROL:
+                resourceName = "ic_qs_pie_on";
+                stringId = R.string.qs_tile_piecontrol;
+                break;
             default:
                 return null;
         }
