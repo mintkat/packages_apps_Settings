@@ -57,48 +57,27 @@
             android:fragment="com.android.settings.euphoria.animation.AnimationSettings"
             android:icon="@drawable/ic_xd_animation_teal" />
 
-       <!-- Lockscreen -->
-       <!--PreferenceScreen
+
+        <!-- Launcher -->
+        <PreferenceScreen
+            android:id="@+id/home_settings"
+            android:title="@string/xd_launcher_settings"
+            android:fragment="com.android.settings.HomeSettings"
+            android:icon="@drawable/ic_settings_home"/>
+
+        <!-- Lockscreen Shortcuts -->
+         <PreferenceScreen
             android:key="lockscreen_shortcuts_settings"
-            android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
-            android:title="@string/lockscreen_targets_message"
-            android:icon="@drawable/ic_xd_lock"/-->
+            android:fragment="com.android.settings.xd.LockScreenExtras"
+            android:title="@string/lockscreen_extras_message"
+            android:icon="@drawable/ic_xd_lock"/>
 
-
-       <!-- Buttons -->
+       <!-- Navbar -->
        <PreferenceScreen
             android:id="@+id/button_settings"
             android:fragment="com.android.settings.ButtonSettings"
             android:title="@string/xd_button_title"
-            android:icon="@drawable/ic_settings_buttons"/>
-
-
-        <!-- Custom -->
-       <PreferenceScreen
-            android:id="@+id/custom_settings"
-            android:fragment="com.android.settings.euphoria.CustomSettings"
-            android:title="@string/radio_controls_title"
-            android:icon="@drawable/ic_settings_more"/>
-
-        <!-- Launcher -->
-        <PreferenceScreen
-                android:id="@+id/home_settings"
-                android:title="@string/xd_launcher_settings"
-                android:fragment="com.android.settings.HomeSettings"
-                android:icon="@drawable/ic_settings_home"/>
-
-        <PreferenceScreen
-            android:key="lockscreen_shortcuts_settings"
-            android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
-            android:title="@string/lockscreen_targets_message"
-            android:icon="@drawable/ic_xd_lock_teal" />
-
-        <PreferenceScreen
-            android:key="lockscreen_weather"
-            android:title="@string/lock_screen_weather_settings_title"
-            android:fragment="com.android.settings.euphoria.LockScreenWeatherSettings"
-            android:icon="@drawable/ic_xd_lock_teal"/>
-
+            android:icon="@drawable/ic_xd_navbut_teal" />
 
         <!-- Notification drawer -->
         <PreferenceScreen
