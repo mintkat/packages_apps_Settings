@@ -70,7 +70,14 @@
             android:key="lockscreen_shortcuts_settings"
             android:fragment="com.android.settings.xd.LockScreenExtras"
             android:title="@string/lockscreen_extras_message"
-            android:icon="@drawable/ic_xd_lock"/>
+            android:icon="@drawable/ic_xd_lock_teal"/>
+
+        <!-- Custom -->
+       <PreferenceScreen
+            android:id="@+id/custom_settings"
+            android:fragment="com.android.settings.euphoria.CustomSettings"
+            android:title="@string/radio_controls_title"
+            android:icon="@drawable/ic_settings_more"/>
 
        <!-- Navbar -->
        <PreferenceScreen
