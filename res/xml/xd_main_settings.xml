@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/xd_settings_title" >
+
+    <!-- BR Extra Apps -->
+    <PreferenceCategory
+        android:key="xd_ex_apps"
+        android:title="@string/xd_ex_apps_title">
+
+        <!-- Ad Blocker -->
+        <Preference
+             android:id="@+id/benzoblock_settings"
+             android:icon="@drawable/ic_xd_adblock_teal"
+             android:title="@string/benzoblock_settings_title" >
+             <intent
+                 android:action="android.intent.action.MAIN"
+                 android:targetPackage="org.adaway"
+                 android:targetClass="org.adaway.ui.BaseActivity" />
+        </Preference>
+
+        <!-- Equalizer -->
+        <Preference
+            android:id="@+id/equalizer_settings"
+            android:title="@string/equalizer_settings_title"
+            android:icon="@drawable/ic_xd_eq_teal" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android"
+                android:targetPackage="com.vipercn.viper4android_v2" />
+        </Preference>
+
+        <!-- LMT PIE -->
+        <Preference
+             android:id="@+id/lmt_settings"
+             android:icon="@drawable/ic_xd_pie_teal"
+             android:title="@string/lmt_settings" >
+             <intent
+                 android:action="android.intent.action.MAIN"
+                 android:targetPackage="com.android.lmt"
+                 android:targetClass="com.android.lmt.LMT" />
+        </Preference>
+
+    </PreferenceCategory>
+
+
+    <!-- BR System Settings -->
+    <PreferenceCategory
+        android:key="xd_ex_settings"
+        android:title="@string/xd_ex_settings">
+
+        <!-- Animations -->
+        <PreferenceScreen
+            android:key="animation_settings"
+            android:title="@string/animation_title"
+            android:fragment="com.android.settings.euphoria.animation.AnimationSettings"
+            android:icon="@drawable/ic_xd_animation_teal" />
+
+       <!-- Lockscreen -->
+       <!--PreferenceScreen
+            android:key="lockscreen_shortcuts_settings"
+            android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
+            android:title="@string/lockscreen_targets_message"
+            android:icon="@drawable/ic_xd_lock"/-->
+
+
+       <!-- Buttons -->
+       <PreferenceScreen
+            android:id="@+id/button_settings"
+            android:fragment="com.android.settings.ButtonSettings"
+            android:title="@string/xd_button_title"
+            android:icon="@drawable/ic_settings_buttons"/>
+
+
+        <!-- Custom -->
+       <PreferenceScreen
+            android:id="@+id/custom_settings"
+            android:fragment="com.android.settings.euphoria.CustomSettings"
+            android:title="@string/radio_controls_title"
+            android:icon="@drawable/ic_settings_more"/>
+
+        <!-- Launcher -->
+        <PreferenceScreen
+                android:id="@+id/home_settings"
+                android:title="@string/xd_launcher_settings"
+                android:fragment="com.android.settings.HomeSettings"
+                android:icon="@drawable/ic_settings_home"/>
+
+        <PreferenceScreen
+            android:key="lockscreen_shortcuts_settings"
+            android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
+            android:title="@string/lockscreen_targets_message"
+            android:icon="@drawable/ic_xd_lock_teal" />
+
+        <PreferenceScreen
+            android:key="lockscreen_weather"
+            android:title="@string/lock_screen_weather_settings_title"
+            android:fragment="com.android.settings.euphoria.LockScreenWeatherSettings"
+            android:icon="@drawable/ic_xd_lock_teal"/>
+
+
+        <!-- Notification drawer -->
+        <PreferenceScreen
+                android:id="@+id/notification_drawer_settings"
+                android:title="@string/notification_drawer_title"
+                android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings"
+                android:icon="@drawable/ic_settings_notification_drawer" />
+
+        <!-- Recents panel options -->
+        <PreferenceScreen
+                android:id="@+id/recent_panel_settings"
+                android:title="@string/recent_panel_title"
+                android:fragment="com.android.settings.euphoria.RecentPanel"
+                android:icon="@drawable/ic_xd_recents_teal"
+                settings:advanced="true"/>
+
+        <!-- Screen Recorder -->
+        <PreferenceScreen
+            android:key="screen_recorder"
+            android:title="@string/screen_recorder_title"
+            android:fragment="com.android.settings.euphoria.ScreenRecorderSettings"
+            android:icon="@drawable/ic_xd_srecord_teal"/>
+
+        <!-- Status bar -->
+        <PreferenceScreen
+                android:id="@+id/status_bar_settings"
+                android:title="@string/status_bar_title"
+                android:fragment="com.android.settings.euphoria.StatusBarSettings"
+                android:icon="@drawable/ic_settings_extdesk_hidenavbar"
+                settings:advanced="true"/>
+
+        <!-- Weather Settings -->
+        <Preference
+            android:id="@+id/weather_settings"
+            android:title="@string/weather_settings_title"
+            android:icon="@drawable/ic_xd_weather_teal" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
+                android:targetPackage="com.cyanogenmod.lockclock" >
+                <extra android:name=":android:show_fragment"
+                    android:value="com.cyanogenmod.lockclock.preference.WeatherPreferences" />
+            </intent>
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

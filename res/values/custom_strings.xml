@@ -17,6 +17,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Benzo Extras -->
+    <string name="benzo_category_title">Benzo</string>
+    <string name="xd_settings_title">Benzo Extras</string>
+    <string name="xd_performance_title">Kernel</string>
+    <string name="xd_ex_apps_title">Applications</string>
+    <string name="xd_ex_settings">System Settings</string>
+    <string name="equalizer_settings_title">Equalizer</string>
+    <string name="lmt_settings">Pie Controls</string>
+    <string name="benzoblock_settings_title">Ad blocker</string>
+    <string name="xd_button_title">Navagation and HW</string>
+    <string name="xd_launcher_settings">Launcher</string>
+    <string name="weather_settings_title">Weather</string>
+
     <!-- GCC version info -->
     <string name="sm_android">Gcc android</string>
     <string name="sm_android_default">Unknown</string>
@@ -38,7 +51,7 @@
     <string name="button_settings_title">Buttons</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version_eos">Euphoria version</string>
+    <string name="mod_version_eos">Benzo version</string>
     <string name="mod_version_default">Unknown</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Build date</string>

@@ -132,6 +132,7 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.WifiCallingSettings;
+import com.android.settings.xd.MainSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -268,7 +269,8 @@ public class SettingsActivity extends Activity
             R.id.status_bar_settings,
             R.id.notification_drawer_settings,
             R.id.theme_settings,
-            R.id.profile_settings
+            R.id.profile_settings,
+            R.id.main_settings
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -345,7 +347,8 @@ public class SettingsActivity extends Activity
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             NotificationManagerSettings.class.getName(),
             LockScreenSettings.class.getName(),
-            DisplayRotation.class.getName()
+            DisplayRotation.class.getName(),
+            MainSettings.class.getName()
     };
 
 
