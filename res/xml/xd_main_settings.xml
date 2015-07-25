@@ -85,6 +85,13 @@
             android:title="@string/gesture_anywhere_title"
 	    android:icon="@drawable/ic_xd_gesture_teal" />
 
+        <!-- Heads Up -->
+        <PreferenceScreen
+            android:key="heads_up_enabled"
+            android:fragment="com.android.settings.headsup.HeadsUpSettings"
+            android:title="@string/category_heads_up"
+	    android:icon="@drawable/ic_xd_headsup_teal" />
+
         <!-- Launcher -->
         <PreferenceScreen
             android:id="@+id/home_settings"

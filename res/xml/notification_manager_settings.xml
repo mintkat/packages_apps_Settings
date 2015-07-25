@@ -41,12 +41,6 @@
             android:persistent="false"
             android:fragment="com.android.settings.notification.NotificationAccessSettings" />
 
-    <!-- Heads up notifications -->
-    <Preference
-            android:key="heads_up_enabled"
-            android:fragment="com.android.settings.headsup.HeadsUpSettings"
-            android:title="@string/category_heads_up" />
-
     <!-- Filter notifications -->
     <PreferenceScreen
             android:title="@string/block_notifications_title"
