@@ -110,12 +110,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
             return;
         }
 
-        mHeadsUpDismissOnRemove = (SwitchPreference) findPreference(PREF_HEADS_UP_DISMISS_ON_REMOVE);
-        mHeadsUpDismissOnRemove.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_DISMISS_ON_REMOVE, mHeadsUpDismiss ? 1 : 0) == 1);
-        mHeadsUpDismissOnRemove.setOnPreferenceChangeListener(this);
-        updateHeadsUpDismissOnRemoveSummary(mHeadsUpDismiss);
-
         mHeadsUpFloatingWindow = (SwitchPreference) findPreference(PREF_HEADS_UP_FLOATING);
         mHeadsUpFloatingWindow.setChecked(Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.HEADS_UP_FLOATING, 0, UserHandle.USER_CURRENT) == 1);
