@@ -208,6 +208,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mStatusBarTemperatureColor.setSummary(hexColor);
             mStatusBarTemperatureColor.setNewPreviewColor(intColor);
 
+        updateWeatherOptions();
+
         if (!Utils.isVoiceCapable(getActivity())) {
             generalCategory.removePreference(mShowCarrierLabel);
         }
@@ -343,6 +345,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     UserHandle.USER_CURRENT);
             mStatusBarTemperature.setSummary(
                     mStatusBarTemperature.getEntries()[index]);
+            updateWeatherOptions();
             return true;
         } else if (preference == mStatusBarTemperatureStyle) {
             int temperatureStyle = Integer.valueOf((String) newValue);
@@ -363,6 +366,17 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    private void updateWeatherOptions() {
+        if (Settings.System.getInt(getActivity().getContentResolver(),
+            Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0) == 0) {
+            mStatusBarTemperatureStyle.setEnabled(false);
+            mStatusBarTemperatureColor.setEnabled(false);
+        } else {
+            mStatusBarTemperatureStyle.setEnabled(true);
+            mStatusBarTemperatureColor.setEnabled(true);
+        }
     }
 
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
