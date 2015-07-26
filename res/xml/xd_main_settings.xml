@@ -120,12 +120,12 @@
             android:title="@string/lockscreen_extras_message"
             android:icon="@drawable/ic_xd_lock_teal"/>
 
-        <!-- Custom -->
+        <!-- More -->
        <PreferenceScreen
             android:id="@+id/custom_settings"
             android:fragment="com.android.settings.euphoria.CustomSettings"
             android:title="@string/radio_controls_title"
-            android:icon="@drawable/ic_settings_more"/>
+            android:icon="@drawable/ic_xd_more_teal"/>
 
        <!-- Navbar -->
        <PreferenceScreen
