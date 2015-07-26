@@ -48,6 +48,7 @@ import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.xd.SeekBarPreferenceCHOS;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_TEMPERATURE = "status_bar_temperature";
     private static final String STATUS_BAR_TEMPERATURE_STYLE = "status_bar_temperature_style";
     private static final String PREF_STATUS_BAR_WEATHER_COLOR = "status_bar_weather_color";
+    private static final String PREF_STATUS_BAR_WEATHER_SIZE = "status_bar_weather_size";
 
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
@@ -99,6 +101,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarTemperature;
     private ListPreference mStatusBarTemperatureStyle;
     private ColorPickerPreference mStatusBarTemperatureColor;
+    private SeekBarPreferenceCHOS mStatusBarTemperatureSize;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -207,6 +210,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         String hexColor = String.format("#%08x", (0xffffffff & intColor));
             mStatusBarTemperatureColor.setSummary(hexColor);
             mStatusBarTemperatureColor.setNewPreviewColor(intColor);
+
+        mStatusBarTemperatureSize = (SeekBarPreferenceCHOS) findPreference(PREF_STATUS_BAR_WEATHER_SIZE);
+        mStatusBarTemperatureSize.setValue(Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_WEATHER_SIZE, 14));
+        mStatusBarTemperatureSize.setOnPreferenceChangeListener(this);
 
         updateWeatherOptions();
 
@@ -364,6 +372,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_WEATHER_COLOR, intHex);
             return true;
+        } else if (preference == mStatusBarTemperatureSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_WEATHER_SIZE, width);
+            return true;
         }
         return false;
     }
@@ -373,9 +386,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0) == 0) {
             mStatusBarTemperatureStyle.setEnabled(false);
             mStatusBarTemperatureColor.setEnabled(false);
+            mStatusBarTemperatureSize.setEnabled(false);
         } else {
             mStatusBarTemperatureStyle.setEnabled(true);
             mStatusBarTemperatureColor.setEnabled(true);
+            mStatusBarTemperatureSize.setEnabled(true);
         }
     }
 
