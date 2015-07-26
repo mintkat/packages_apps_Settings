@@ -54,6 +54,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
 public class StatusBarSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener, Indexable {
 
@@ -71,8 +73,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
     private static final String BREATHING_NOTIFICATIONS = "breathing_notifications";
+
     private static final String STATUS_BAR_TEMPERATURE = "status_bar_temperature";
     private static final String STATUS_BAR_TEMPERATURE_STYLE = "status_bar_temperature_style";
+    private static final String PREF_STATUS_BAR_WEATHER_COLOR = "status_bar_weather_color";
 
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
@@ -91,8 +95,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mShowCarrierLabel;
     private PreferenceScreen mLockClock;
     private PreferenceScreen mBreathingNotifications;
+
     private ListPreference mStatusBarTemperature;
     private ListPreference mStatusBarTemperatureStyle;
+    private ColorPickerPreference mStatusBarTemperatureColor;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -192,6 +198,15 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarTemperatureStyle.setValue(String.valueOf(temperatureStyle));
         mStatusBarTemperatureStyle.setSummary(mStatusBarTemperatureStyle.getEntry());
         mStatusBarTemperatureStyle.setOnPreferenceChangeListener(this);
+
+        mStatusBarTemperatureColor =
+            (ColorPickerPreference) findPreference(PREF_STATUS_BAR_WEATHER_COLOR);
+        mStatusBarTemperatureColor.setOnPreferenceChangeListener(this);
+        int intColor = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_WEATHER_COLOR, 0xffffffff);
+        String hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mStatusBarTemperatureColor.setSummary(hexColor);
+            mStatusBarTemperatureColor.setNewPreviewColor(intColor);
 
         if (!Utils.isVoiceCapable(getActivity())) {
             generalCategory.removePreference(mShowCarrierLabel);
@@ -337,6 +352,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     UserHandle.USER_CURRENT);
             mStatusBarTemperatureStyle.setSummary(
                     mStatusBarTemperatureStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarTemperatureColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_WEATHER_COLOR, intHex);
             return true;
         }
         return false;
