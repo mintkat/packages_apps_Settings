@@ -1913,6 +1913,8 @@
         <activity
              android:name=".benzo.MainSettings" />
 
+	<activity android:name=".benzo.Density" />
+
         <!-- Development settings -->
 
         <!-- DeviceInfo adds the user's requested build to stats upload.  -->
