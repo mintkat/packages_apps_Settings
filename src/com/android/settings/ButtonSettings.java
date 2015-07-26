@@ -32,7 +32,7 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 
 import com.android.internal.util.cm.ScreenType;
-import com.android.internal.util.xd.Action;
+import com.android.internal.util.slim.Action;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
