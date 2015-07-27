@@ -133,6 +133,7 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.WifiCallingSettings;
 import com.android.settings.xd.MainSettings;
+import com.android.settings.xd.themes.ThemeSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -270,7 +271,8 @@ public class SettingsActivity extends Activity
             R.id.notification_drawer_settings,
             R.id.theme_settings,
             R.id.profile_settings,
-            R.id.main_settings
+            R.id.main_settings,
+            R.id.theme_settings
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -348,7 +350,8 @@ public class SettingsActivity extends Activity
             LockScreenSettings.class.getName(),
             DisplayRotation.class.getName(),
             MainSettings.class.getName(),
-            PieControl.class.getName()
+            PieControl.class.getName(),
+            ThemeSettings.class.getName()
     };
 
 

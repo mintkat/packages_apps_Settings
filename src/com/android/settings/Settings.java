@@ -115,5 +115,6 @@ public class Settings extends SettingsActivity {
     public static class DisplayRotationActivity extends SettingsActivity { /* empty */ }
     public static class MainSettingsActivity extends SettingsActivity { /* empty */ }
     public static class PieControlSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ThemeSettingsActivity extends SettingsActivity { /* empty */ }
 }
 
