@@ -32,6 +32,12 @@
         android:entryValues="@array/torch_screen_off_delay_values"
         android:dependency="disable_torch_on_screen_off" />
 
+   <PreferenceScreen
+        android:key="battery_bar"
+        android:fragment="com.android.settings.xd.BatteryBar"
+        android:title="@string/battery_bar"
+        android:summary="@string/battery_bar_summary" />
+
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="slim_action_floats"
         android:title="@string/slim_action_floating_window_title"
