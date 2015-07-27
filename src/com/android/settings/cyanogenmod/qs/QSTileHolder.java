@@ -183,6 +183,14 @@ public class QSTileHolder {
                 resourceName = "ic_qs_heads_up_on";
                 stringId = R.string.qs_tile_heads_up;
                 break;
+            case QSConstants.TILE_PIECONTROL:
+                resourceName = "ic_qs_pie_on";
+                stringId = R.string.qs_tile_piecontrol;
+                break;
+            case QSConstants.TILE_NAVBAR:
+                resourceName = "ic_qs_navbar_on";
+                stringId = R.string.qs_tile_navbar;
+                break;
 
             // Dynamic tiles
             case QSConstants.DYNAMIC_TILE_NEXT_ALARM:
@@ -200,10 +208,6 @@ public class QSTileHolder {
             case QSConstants.DYNAMIC_TILE_ADB:
                 resourceName = "ic_dynamic_qs_adb";
                 stringId = R.string.qs_dynamic_tile_adb;
-                break;
-            case QSConstants.TILE_PIECONTROL:
-                resourceName = "ic_qs_pie_on";
-                stringId = R.string.qs_tile_piecontrol;
                 break;
             default:
                 return null;
