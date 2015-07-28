@@ -32,7 +32,7 @@
             android:key="app_sidebar"
             android:fragment="com.android.settings.xd.AppSidebar"
             android:title="@string/app_sidebar_title"
-	    android:icon="@drawable/ic_settings_sidebar_teal" />
+	        android:icon="@drawable/ic_settings_sidebar_teal" />
 
         <!-- Equalizer -->
         <Preference
@@ -50,32 +50,32 @@
             android:key="density_changer"
             android:title="@string/lcd_density_title"
             android:fragment="com.android.settings.xd.Density"
-	    android:icon="@drawable/ic_dt_density_teal" />
+	        android:icon="@drawable/ic_dt_density_teal" />
 
         <!-- LMT PIE -->
         <Preference
-             android:id="@+id/lmt_settings"
-             android:icon="@drawable/ic_xd_pie_teal"
-             android:title="@string/lmt_settings" >
-             <intent
-                 android:action="android.intent.action.MAIN"
-                 android:targetPackage="com.android.lmt"
-                 android:targetClass="com.android.lmt.LMT" />
+            android:id="@+id/lmt_settings"
+            android:icon="@drawable/ic_xd_pie_teal"
+            android:title="@string/lmt_settings" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.lmt"
+                android:targetClass="com.android.lmt.LMT" />
         </Preference>
 
         <!--PA Pie Control -->
         <PreferenceScreen
-             android:key="pa_pie_control"
-             android:icon="@drawable/ic_xd_papie_teal"
-             android:title="@string/pa_pie_control_title"
-             android:fragment="com.android.settings.paranoid.PieControl" />
+            android:key="pa_pie_control"
+            android:icon="@drawable/ic_xd_papie_teal"
+            android:title="@string/pa_pie_control_title"
+            android:fragment="com.android.settings.paranoid.PieControl" />
 
         <!-- Wakelock blocker -->
         <PreferenceScreen
             android:key="wakelock_blocker"
             android:fragment="com.android.settings.xd.WakeLockBlocker"
             android:title="@string/wakelock_blocker_title"
-	    android:icon="@drawable/ic_xd_wakelock_teal" />
+	        android:icon="@drawable/ic_xd_wakelock_teal" />
 
     </PreferenceCategory>
 
@@ -97,21 +97,21 @@
             android:key="gesture_anywhere"
             android:fragment="com.android.settings.xd.gestureanywhere.GestureAnywhereSettings"
             android:title="@string/gesture_anywhere_title"
-	    android:icon="@drawable/ic_xd_gesture_teal" />
+	        android:icon="@drawable/ic_xd_gesture_teal" />
 
         <!-- Heads Up -->
         <PreferenceScreen
             android:key="heads_up_enabled"
             android:fragment="com.android.settings.headsup.HeadsUpSettings"
             android:title="@string/category_heads_up"
-	    android:icon="@drawable/ic_xd_headsup_teal" />
+	        android:icon="@drawable/ic_xd_headsup_teal" />
 
         <!-- Launcher -->
         <PreferenceScreen
             android:id="@+id/home_settings"
             android:title="@string/xd_launcher_settings"
             android:fragment="com.android.settings.HomeSettings"
-            android:icon="@drawable/ic_settings_home"/>
+            android:icon="@drawable/ic_xd_launcher_teal"/>
 
         <!-- Lockscreen Shortcuts -->
          <PreferenceScreen
@@ -136,18 +136,18 @@
 
         <!-- Notification drawer -->
         <PreferenceScreen
-                android:id="@+id/notification_drawer_settings"
-                android:title="@string/notification_drawer_title"
-                android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings"
-                android:icon="@drawable/ic_settings_notification_drawer" />
+            android:id="@+id/notification_drawer_settings"
+            android:title="@string/notification_drawer_title"
+            android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings"
+            android:icon="@drawable/ic_settings_notification_drawer" />
 
         <!-- Recents panel options -->
         <PreferenceScreen
-                android:id="@+id/recent_panel_settings"
-                android:title="@string/recent_panel_title"
-                android:fragment="com.android.settings.euphoria.RecentPanel"
-                android:icon="@drawable/ic_xd_recents_teal"
-                settings:advanced="true"/>
+            android:id="@+id/recent_panel_settings"
+            android:title="@string/recent_panel_title"
+            android:fragment="com.android.settings.euphoria.RecentPanel"
+            android:icon="@drawable/ic_xd_recents_teal"
+            settings:advanced="true"/>
 
         <!-- Screen Recorder -->
         <PreferenceScreen
@@ -158,11 +158,11 @@
 
         <!-- Status bar -->
         <PreferenceScreen
-                android:id="@+id/status_bar_settings"
-                android:title="@string/status_bar_title"
-                android:fragment="com.android.settings.euphoria.StatusBarSettings"
-                android:icon="@drawable/ic_settings_extdesk_hidenavbar"
-                settings:advanced="true"/>
+            android:id="@+id/status_bar_settings"
+            android:title="@string/status_bar_title"
+            android:fragment="com.android.settings.euphoria.StatusBarSettings"
+            android:icon="@drawable/ic_settings_extdesk_hidenavbar"
+            settings:advanced="true"/>
 
         <!-- Weather Settings -->
         <Preference
