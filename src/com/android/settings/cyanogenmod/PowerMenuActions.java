@@ -61,7 +61,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private CheckBoxPreference mRebootPref;
     private CheckBoxPreference mScreenshotPref;
     private CheckBoxPreference mScreenRecordPref;
-    private CheckBoxPreference mProfilePref;
     private CheckBoxPreference mAirplanePref;
     private CheckBoxPreference mTorchPref;
     private CheckBoxPreference mUsersPref;
@@ -124,8 +123,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
                 mScreenshotPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SCREENSHOT);
             } else if (action.equals(GLOBAL_ACTION_KEY_SCREENRECORD)) {
                 mScreenRecordPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SCREENRECORD);
-            } else if (action.equals(GLOBAL_ACTION_KEY_PROFILE)) {
-                mProfilePref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_PROFILE);
             } else if (action.equals(GLOBAL_ACTION_KEY_AIRPLANE)) {
                 mAirplanePref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_AIRPLANE);
             } else if (action.equals(GLOBAL_ACTION_KEY_TORCH)) {
@@ -173,10 +170,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
 
         if (mScreenRecordPref != null) {
             mScreenRecordPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_SCREENRECORD));
-        }
-
-        if (mProfilePref != null) {
-            mProfilePref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_PROFILE));
         }
 
         if (mAirplanePref != null) {
@@ -239,10 +232,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
         } else if (preference == mScreenRecordPref) {
             value = mScreenRecordPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_SCREENRECORD);
-
-        } else if (preference == mProfilePref) {
-            value = mProfilePref.isChecked();
-            updateUserConfig(value, GLOBAL_ACTION_KEY_PROFILE);
 
         } else if (preference == mAirplanePref) {
             value = mAirplanePref.isChecked();
@@ -317,17 +306,6 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     private void updatePreferences() {
         boolean bugreport = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0;
-        boolean profiles = Settings.System.getInt(getContentResolver(),
-                Settings.System.SYSTEM_PROFILES_ENABLED, 1) != 0;
-
-        if (mProfilePref != null) {
-            mProfilePref.setEnabled(profiles);
-            if (profiles) {
-                mProfilePref.setSummary(null);
-            } else {
-                mProfilePref.setSummary(R.string.power_menu_profiles_disabled);
-            }
-        }
 
         if (mBugReportPref != null) {
             mBugReportPref.setEnabled(bugreport);
