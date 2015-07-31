@@ -32,6 +32,8 @@
     <string name="dlg_reset_android">Android</string>
     <string name="dlg_reset_Benzo">Benzo</string>
     <string name="color_title">Color</string>
+    <string name="colors_title">Colors</string>
+    <string name="category_colors_title">Customize colors</string>
     <string name="icons_title">Icons</string>
     <string name="text_title">Text</string>
     <string name="background_title">Background</string>
@@ -60,6 +62,10 @@
     <string name="weather_category_xd">Weather Settings</string>
     <string name="lock_screen_weather_settings_summary">Customize Weather</string>
     <string name="more_options_title">More Options</string>
+    <string name="lock_screen_color_settings_summary">Customize colors</string>
+    <string name="lockweather_category">Weather</string>
+    <string name="system_category_xd">System Settings</string>
+    <string name="weather_category_xd">Weather Settings</string>
 
     <!-- GCC version info -->
     <string name="sm_android">Gcc android</string>
@@ -299,6 +305,8 @@
     <string name="position_right_title">Right</string>
     <string name="position_centered_title">Centered</string>
     <string name="hidden_title">Hidden</string>
+    <string name="weather_colorize_all_icons_title">Colorize all icons</string>
+    <string name="weather_colorize_all_icons_summary">Enable to colorize all icons, disable to colorize only the monochrome icons</string>
 
     <!-- Recents panel -->
     <string name="recent_panel_title">Recents</string>

@@ -4,31 +4,48 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/xd_lockscreen_title" >
 
+    <PreferenceCategory
+        android:key="lockweather_category"
+        android:title="@string/weather_category_xd">
 
-    <PreferenceScreen
-        android:key="lock_screen_weather_settings"
-        android:title="@string/lock_screen_weather_settings_title"
-        android:summary="@string/lock_screen_weather_settings_summary"
-        android:fragment="com.android.settings.euphoria.LockScreenWeatherSettings" />
-         
-    <PreferenceScreen
-        android:key="lock_clock"
-        android:title="@string/lock_clock_title"
-        android:summary="@string/lock_clock_summary">
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.cyanogenmod.lockclock"
-                android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
-    </PreferenceScreen>  
+        <PreferenceScreen
+            android:key="lock_screen_weather_settings"
+            android:title="@string/lock_screen_weather_settings_title"
+            android:summary="@string/lock_screen_weather_settings_summary"
+            android:fragment="com.android.settings.xd.LockScreenWeatherSettings" />
 
-    <PreferenceScreen
-        android:key="lockscreen_shortcuts_settings"
-        android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
-        android:title="@string/lockscreen_targets_message" />>
+        <PreferenceScreen
+            android:key="lock_screen_color_settings"
+            android:title="@string/colors_title"
+            android:summary="@string/lock_screen_color_settings_summary"
+            android:fragment="com.android.settings.xd.LockScreenColorSettings" />
 
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_anywhere"
-        android:title="@string/double_tap_sleep_anywhere_title"
-        android:summary="@string/double_tap_sleep_anywhere_summary"
-        settings:advanced="true"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="locksystem_category"
+        android:title="@string/system_category_xd">
+
+        <PreferenceScreen
+            android:key="lock_clock"
+            android:title="@string/lock_clock_title"
+            android:summary="@string/lock_clock_summary">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.cyanogenmod.lockclock"
+                    android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
+        </PreferenceScreen>  
+
+        <PreferenceScreen
+             android:key="lockscreen_shortcuts_settings"
+             android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
+             android:title="@string/lockscreen_targets_message" />>
+
+         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+             android:key="double_tap_sleep_anywhere"
+             android:title="@string/double_tap_sleep_anywhere_title"
+             android:summary="@string/double_tap_sleep_anywhere_summary"
+             settings:advanced="true"/>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
