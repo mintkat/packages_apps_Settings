@@ -507,9 +507,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             case DIALOG_LOCK_MODE:
                 return requestLockscreenModeDialog();
 
-            case DIALOG_DOZE_MODE:
-                return requestDozeModeDialog();
-
             case DIALOG_RING_MODE:
                 return requestRingModeDialog(((RingModeItem) mSelectedItem).getSettings());
 

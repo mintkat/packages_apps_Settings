@@ -90,7 +90,6 @@ import com.android.settings.dashboard.NoHomeDialogFragment;
 import com.android.settings.dashboard.SearchResultsSummary;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
-import com.android.settings.euphoria.ambientdisplay.AmbientSettings;
 import com.android.settings.euphoria.CustomSettings;
 import com.android.settings.euphoria.StatusBarSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
@@ -343,7 +342,6 @@ public class SettingsActivity extends Activity
             QSTiles.class.getName(),
             ProfilesSettings.class.getName(),
             ExpandedDesktopPreferenceFragment.class.getName(),
-            AmbientSettings.class.getName(),
             LiveDisplay.class.getName(),
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             NotificationManagerSettings.class.getName(),

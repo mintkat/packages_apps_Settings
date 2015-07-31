@@ -123,13 +123,6 @@
         android:key="interface"
         android:title="@string/category_interface">
 
-        <!-- Doze // Ambient display advanced -->
-        <PreferenceScreen
-                android:key="doze_fragment"
-                android:title="@string/doze_title"
-                android:fragment="com.android.settings.euphoria.ambientdisplay.AmbientSettings"
-                settings:advanced="true"/>
-
         <!-- Doze // Ambient display -->
         <SwitchPreference
                 android:key="doze"
