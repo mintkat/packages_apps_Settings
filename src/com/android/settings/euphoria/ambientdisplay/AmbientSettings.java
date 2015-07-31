@@ -121,6 +121,14 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             removePreference(KEY_DOZE_SHAKE_THRESHOLD);
             removePreference(KEY_DOZE_SHAKE_CATEGORY);
         }
+
+        mDozeBrightness = (SeekBarPreference) findPreference(KEY_DOZE_BRIGHTNESS);
+        int dozeBrightness = Settings.System.getInt(resolver,
+                    Settings.System.DOZE_BRIGHTNESS, clampAbsoluteBrightness(resources.getInteger(
+                com.android.internal.R.integer.config_screenBrightnessSettingMinimum)));
+        mDozeBrightness.setValue(dozeBrightness);
+        mDozeBrightness.setOnPreferenceChangeListener(this);
+
         updateDozeListMode();
         updateDozeOptions();
         mShakeSensorManager = new ShakeSensorManager(activity, this);
