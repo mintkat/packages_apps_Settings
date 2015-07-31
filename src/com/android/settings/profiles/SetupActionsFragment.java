@@ -75,7 +75,6 @@ import com.android.settings.profiles.actions.item.AppGroupItem;
 import com.android.settings.profiles.actions.item.BrightnessItem;
 import com.android.settings.profiles.actions.item.ConnectionOverrideItem;
 import com.android.settings.profiles.actions.item.DisabledItem;
-import com.android.settings.profiles.actions.item.DozeModeItem;
 import com.android.settings.profiles.actions.item.Header;
 import com.android.settings.profiles.actions.item.Item;
 import com.android.settings.profiles.actions.item.LockModeItem;
@@ -83,7 +82,6 @@ import com.android.settings.profiles.actions.item.ProfileNameItem;
 import com.android.settings.profiles.actions.item.RingModeItem;
 import com.android.settings.profiles.actions.item.TriggerItem;
 import com.android.settings.profiles.actions.item.VolumeStreamItem;
-import com.android.settings.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,11 +136,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             Profile.ExpandedDesktopMode.ENABLE,
             Profile.ExpandedDesktopMode.DISABLE
     };
-    private static final int[] DOZE_MAPPING = new int[]{
-            Profile.DozeMode.DEFAULT,
-            Profile.DozeMode.ENABLE,
-            Profile.DozeMode.DISABLE
-    };
+
     private List<Item> mItems = new ArrayList<Item>();
 
     public static SetupActionsFragment newInstance(Profile profile, boolean newProfile) {
@@ -247,11 +241,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
                     R.string.profile_lockmode_policy_disabled_summary));
         }
         mItems.add(new BrightnessItem(mProfile.getBrightness()));
-
-        final Activity activity = getActivity();
-        if (Utils.isDozeAvailable(activity)) {
-            mItems.add(new DozeModeItem(mProfile));
-        }
 
         // app groups
         if (SettingsActivity.showAdvancedPreferences(getActivity())) {
@@ -611,36 +600,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         return builder.create();
     }
 
-    private AlertDialog requestDozeModeDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final String[] dozeEntries =
-                getResources().getStringArray(R.array.profile_doze_entries);
-
-        int defaultIndex = 0; // no action
-        for (int i = 0; i < DOZE_MAPPING.length; i++) {
-            if (DOZE_MAPPING[i] == mProfile.getDozeMode()) {
-                defaultIndex = i;
-                break;
-            }
-        }
-
-        builder.setTitle(R.string.doze_title);
-        builder.setSingleChoiceItems(dozeEntries, defaultIndex,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        mProfile.setDozeMode(DOZE_MAPPING[item]);
-                        updateProfile();
-                        mAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-
-        builder.setNegativeButton(android.R.string.cancel, null);
-        return builder.create();
-    }
-
-    private AlertDialog requestAirplaneModeDialog(final AirplaneModeSettings setting) {
+    private void requestAirplaneModeDialog(final AirplaneModeSettings setting) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final String[] connectionNames =
                 getResources().getStringArray(R.array.profile_action_generic_connection_entries);
@@ -1054,8 +1014,6 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
             showDialog(DIALOG_BRIGHTNESS);
         } else if (itemAtPosition instanceof LockModeItem) {
             showDialog(DIALOG_LOCK_MODE);
-        } else if (itemAtPosition instanceof DozeModeItem) {
-            showDialog(DIALOG_DOZE_MODE);
         } else if (itemAtPosition instanceof RingModeItem) {
             showDialog(DIALOG_RING_MODE);
         } else if (itemAtPosition instanceof ConnectionOverrideItem) {

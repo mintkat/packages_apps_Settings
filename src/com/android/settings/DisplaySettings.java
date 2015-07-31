@@ -44,6 +44,7 @@ import android.hardware.CmHardwareManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
@@ -61,6 +62,7 @@ import android.preference.SwitchPreference;
 import android.preference.TwoStatePreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -74,7 +76,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.settings.cyanogenmod.DisplayRotation;
-import com.android.settings.Utils;
 
 import com.android.settings.Utils;
 
@@ -216,7 +217,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
-        if (mDozePreference != null && Utils.isDozeAvailable(activity)) {
+        if (mDozePreference != null && isDozeAvailable(activity)) {
             mDozePreference.setOnPreferenceChangeListener(this);
         } else {
             if (displayPrefs != null && mDozePreference != null) {
@@ -225,7 +226,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
-        if (displayPrefs != null && mDozeFragement != null && !Utils.isDozeAvailable(activity)) {
+        if (displayPrefs != null && mDozeFragement != null && !isDozeAvailable(activity)) {
             displayPrefs.removePreference(mDozeFragement);
         }
 
@@ -267,6 +268,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static boolean isLiftToWakeAvailable(Context context) {
         SensorManager sensors = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         return sensors != null && sensors.getDefaultSensor(Sensor.TYPE_WAKE_GESTURE) != null;
+    }
+
+    private static boolean isDozeAvailable(Context context) {
+        String name = Build.IS_DEBUGGABLE ? SystemProperties.get("debug.doze.component") : null;
+        if (TextUtils.isEmpty(name)) {
+            name = context.getResources().getString(
+                    com.android.internal.R.string.config_dozeComponent);
+        }
+        return !TextUtils.isEmpty(name);
     }
 
     private static boolean isAutomaticBrightnessAvailable(Resources res) {
@@ -654,10 +664,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     if (!isLiftToWakeAvailable(context)) {
                         result.add(KEY_LIFT_TO_WAKE);
                     }
-                    if (!Utils.isDozeAvailable(context)) {
+                    if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
                     }
-                    if (!Utils.isDozeAvailable(context)) {
+                    if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE_FRAGMENT);
                     }
                     return result;
