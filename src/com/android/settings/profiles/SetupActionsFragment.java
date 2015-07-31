@@ -597,7 +597,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         return builder.create();
     }
 
-    private void requestAirplaneModeDialog(final AirplaneModeSettings setting) {
+    private AlertDialog requestAirplaneModeDialog(final AirplaneModeSettings setting) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final String[] connectionNames =
                 getResources().getStringArray(R.array.profile_action_generic_connection_entries);
