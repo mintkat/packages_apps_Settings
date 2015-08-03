@@ -38,6 +38,7 @@
         <PreferenceScreen
              android:key="lockscreen_shortcuts_settings"
              android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
+             android:summary="@string/lockscreen_shortcuts_summary"
              android:title="@string/lockscreen_targets_message" />>
 
          <com.android.settings.cyanogenmod.SystemSettingSwitchPreference

@@ -66,6 +66,7 @@
     <string name="lockweather_category">Weather</string>
     <string name="system_category_xd">System Settings</string>
     <string name="weather_category_xd">Weather Settings</string>
+    <string name="lockscreen_shortcuts_summary">Change the shortcuts on lockscreen to whatever you want</string>
 
     <!-- GCC version info -->
     <string name="sm_android">Gcc android</string>
@@ -94,7 +95,7 @@
 
     <!-- LockClocK -->
     <string name="lock_clock_title">Clock widget settings</string>
-    <string name="lock_clock_summary">View or change how the clock widget will be displayed.</string>
+    <string name="lock_clock_summary">View or change how the clock widget will be displayed</string>
 
     <!-- Custom settings  -->
     <string name="custom_settings_title">Custom</string>

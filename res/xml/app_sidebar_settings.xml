@@ -48,7 +48,7 @@
         android:defaultValue="false"
         android:dependency="sidebar_enable" />
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="sidebar_hide_labels"
         android:title="@string/app_sidebar_hide_labels_title"
         android:summary="@string/app_sidebar_hide_labels_summary"

@@ -31,7 +31,7 @@ public class AppSidebar extends SettingsPreferenceFragment implements
     private SwitchPreference mEnabledPref;
     private SeekBarPreferenceCHOS mTransparencyPref;
     private ListPreference mPositionPref;
-    private CheckBoxPreference mHideLabelsPref;
+    private SwitchPreference mHideLabelsPref;
     private SeekBarPreferenceCHOS mTriggerWidthPref;
     private SeekBarPreferenceCHOS mTriggerTopPref;
     private SeekBarPreferenceCHOS mTriggerBottomPref;
@@ -47,7 +47,7 @@ public class AppSidebar extends SettingsPreferenceFragment implements
                 Settings.System.APP_SIDEBAR_ENABLED, 0) == 1));
         mEnabledPref.setOnPreferenceChangeListener(this);
 
-        mHideLabelsPref = (CheckBoxPreference) findPreference(KEY_HIDE_LABELS);
+        mHideLabelsPref = (SwitchPreference) findPreference(KEY_HIDE_LABELS);
         mHideLabelsPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.APP_SIDEBAR_DISABLE_LABELS, 0) == 1));
 
