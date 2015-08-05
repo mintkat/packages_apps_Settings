@@ -483,6 +483,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     com.android.internal.R.bool.config_doze_enabled_by_default) ? 1 : 0);
             mDozePreference.setChecked(value != 0);
         }
+
     }
 
     private void updateScreenSaverSummary() {

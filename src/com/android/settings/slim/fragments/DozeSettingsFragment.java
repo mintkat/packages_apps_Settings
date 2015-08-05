@@ -41,6 +41,8 @@ import android.widget.ListView;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.settings.cyanogenmod.SecureSettingSwitchPreference;
+
 public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
@@ -50,6 +52,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE_TRIGGER_NOTIFICATION = "doze_trigger_notification";
     private static final String KEY_DOZE_SCHEDULE = "doze_schedule";
     private static final String KEY_DOZE_BRIGHTNESS = "doze_brightness";
+    private static final String KEY_DOZE_NOTIFICATION_INVERT = "doze_notification_invert_enabled";
 
     private static final String SYSTEMUI_METADATA_NAME = "com.android.systemui";
 
@@ -59,6 +62,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
     private SwitchPreference mDozeTriggerNotification;
     private SwitchPreference mDozeSchedule;
     private SlimSeekBarPreference mDozeBrightness;
+    private SwitchPreference mDozeNotifInvert;
 
     private float mBrightnessScale;
     private float mDefaultBrightnessScale;
@@ -113,6 +117,9 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         mDozeBrightness.setInterval(1);
         mDozeBrightness.setOnPreferenceChangeListener(this);
 
+        mDozeNotifInvert = (SwitchPreference) findPreference(KEY_DOZE_NOTIFICATION_INVERT);
+        mDozeNotifInvert.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(false);
     }
 
@@ -147,6 +154,11 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
             float valNav = Float.parseFloat((String) newValue);
             Settings.System.putFloat(getContentResolver(),
                     Settings.System.DOZE_BRIGHTNESS, valNav / 100);
+        }
+        if (preference == mDozeNotifInvert) {
+            boolean value = (Boolean) newValue;
+            Settings.Secure.putInt(getContentResolver(),
+                    Settings.Secure.DOZE_NOTIFICATION_INVERT_ENABLED, value ? 1 : 0);
         }
         return true;
     }
@@ -191,6 +203,11 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
             mBrightnessScale = Settings.System.getFloat(getContentResolver(),
                     Settings.System.DOZE_BRIGHTNESS, mDefaultBrightnessScale);
             mDozeBrightness.setInitValue((int) (mBrightnessScale * 100));
+        }
+        if (mDozeNotifInvert != null) {
+            int value = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.DOZE_NOTIFICATION_INVERT_ENABLED, 1);
+            mDozeNotifInvert.setChecked(value != 0);
         }
     }
 
