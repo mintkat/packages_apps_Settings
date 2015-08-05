@@ -122,7 +122,7 @@
         <!-- TRDS -->
         <dashboard-tile
                 android:id="@+id/theme_settings"
-                android:icon="@drawable/ic_settings_theme"
+                android:icon="@drawable/ic_settings_theme_teal"
                 android:fragment="com.android.settings.xd.themes.ThemeSettings"
                 android:title="@string/theme_settings_title"
                 />
