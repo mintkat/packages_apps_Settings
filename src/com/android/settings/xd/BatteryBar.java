@@ -115,7 +115,7 @@ public class BatteryBar extends SettingsPreferenceFragment implements
         if (preference == mBatteryBarChargingAnimation) {
             Settings.System.putInt(resolver,
                     Settings.System.STATUSBAR_BATTERY_BAR_ANIMATE,
-                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+                    ((SwitchPreference) preference).isChecked() ? 1 : 0);
             return true;
         }
         return false;
