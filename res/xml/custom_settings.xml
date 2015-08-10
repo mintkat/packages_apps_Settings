@@ -19,12 +19,18 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/custom_settings_title">
 
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+   <PreferenceScreen
+        android:key="battery_bar"
+        android:fragment="com.android.settings.xd.BatteryBar"
+        android:title="@string/battery_bar"
+        android:summary="@string/battery_bar_summary" />
+
+   <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="disable_torch_on_screen_off"
         android:title="@string/disable_torch_screen_off_title"
         android:defaultValue="false" />
 
-    <ListPreference
+   <ListPreference
         android:key="disable_torch_on_screen_off_delay"
         android:title="@string/disable_torch_screen_off_delay_title"
         android:dialogTitle="@string/disable_torch_screen_off_delay_title"
@@ -32,20 +38,14 @@
         android:entryValues="@array/torch_screen_off_delay_values"
         android:dependency="disable_torch_on_screen_off" />
 
-   <PreferenceScreen
-        android:key="battery_bar"
-        android:fragment="com.android.settings.xd.BatteryBar"
-        android:title="@string/battery_bar"
-        android:summary="@string/battery_bar_summary" />
-
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+   <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="slim_action_floats"
         android:title="@string/slim_action_floating_window_title"
         android:summary="@string/slim_action_floating_window_summary"
         android:defaultValue="false" />
 
-    <!-- Three-fingers-swipe to screenshot -->
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+   <!-- Three-fingers-swipe to screenshot -->
+   <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="three_finger_gesture"
         android:title="@string/three_finger_gesture"
         android:summary="@string/three_finger_gesture_summary"
