@@ -621,7 +621,7 @@ public class ActionListViewSettings extends ListFragment implements
                         iconUri, false), 36); */
             } else {
                 d = ImageHelper.resize(
-                        mActivity, ActionHelper.getButtonIconImage(mActivity,
+                        mActivity, ActionHelper.getActionIconImage(mActivity,
                         getItem(position).getClickAction(),
                         iconUri), 36);
             }
