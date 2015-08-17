@@ -327,10 +327,6 @@
     <string name="weather_number_of_notifications_five_title">5</string>
     <string name="weather_number_of_notifications_six_title">6</string>
 
-    <!-- Lockscreen wallpaper -->
-    <string name="lockscreen_wallpaper_title">Wallpaper</string>
-    <string name="lockscreen_wallpaper_summary">Set lockscreen wallpaper</string>
-
     <!-- Recents panel -->
     <string name="recent_panel_title">Recents</string>
     <string name="aosp_recents_panel">AOSP recents panel</string>
