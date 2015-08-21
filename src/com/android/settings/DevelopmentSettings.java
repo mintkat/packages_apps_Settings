@@ -1443,7 +1443,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                     scale = Settings.System.getIntForUser(getContentResolver(),
                             Settings.System.LONG_PRESS_KILL_DELAY,
                             UserHandle.USER_CURRENT);
-                    scale = ((float) (scale) / 1000);
+                    scale = ((float) (scale) / 200);
                 } catch (Settings.SettingNotFoundException exc) {
                     scale = 1.0f;
                 }
