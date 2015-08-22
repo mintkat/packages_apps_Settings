@@ -91,12 +91,6 @@
         android:key="displaywakeup"
         android:title="@string/displaywakeup_label">
 
-        <!-- Lift to wake -->
-        <SwitchPreference
-                android:key="lift_to_wake"
-                android:title="@string/lift_to_wake_title"
-                android:persistent="false" />
-
         <!-- Prevent accidental wake-up -->
         <SwitchPreference
                 android:key="proximity_on_wake"

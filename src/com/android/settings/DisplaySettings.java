@@ -22,7 +22,6 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import static android.provider.Settings.Secure.DOZE_ENABLED;
-import static android.provider.Settings.Secure.WAKE_GESTURE_ENABLED;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL;
@@ -94,7 +93,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
-    private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
+
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
 
@@ -122,7 +121,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private ListPreference mScreenTimeoutPreference;
     private Preference mScreenSaverPreference;
     private SwitchPreference mAccelerometer;
-    private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
     private PreferenceScreen mTouchControl;
@@ -224,16 +222,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
-        mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
-        if (mLiftToWakePreference != null && isLiftToWakeAvailable(activity)) {
-            mLiftToWakePreference.setOnPreferenceChangeListener(this);
-        } else {
-            if (displayPrefs != null && mLiftToWakePreference != null) {
-                displayPrefs.removePreference(mLiftToWakePreference);
-                mLiftToWakePreference = null;
-            }
-        }
-
         mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
         if (displayPrefs != null && mTapToWake != null
                 && !mHardware.isSupported(FEATURE_TAP_TO_WAKE)) {
@@ -275,11 +263,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static boolean allowAllRotations(Context context) {
         return Resources.getSystem().getBoolean(
                 com.android.internal.R.bool.config_allowAllRotations);
-    }
-
-    private static boolean isLiftToWakeAvailable(Context context) {
-        SensorManager sensors = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        return sensors != null && sensors.getDefaultSensor(Sensor.TYPE_WAKE_GESTURE) != null;
     }
 
     private static boolean isDozeAvailable(Context context) {
@@ -478,12 +461,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAutoBrightnessPreference.setChecked(brightnessMode != SCREEN_BRIGHTNESS_MODE_MANUAL);
         }
 
-        // Update lift-to-wake if it is available.
-        if (mLiftToWakePreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), WAKE_GESTURE_ENABLED, 0);
-            mLiftToWakePreference.setChecked(value != 0);
-        }
-
         // Update doze if it is available.
         if (mDozePreference != null) {
             int value = Settings.Secure.getInt(getContentResolver(), DOZE_ENABLED,
@@ -588,10 +565,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
                     auto ? SCREEN_BRIGHTNESS_MODE_AUTOMATIC : SCREEN_BRIGHTNESS_MODE_MANUAL);
         }
-        if (preference == mLiftToWakePreference) {
-            boolean value = (Boolean) objValue;
-            Settings.Secure.putInt(getContentResolver(), WAKE_GESTURE_ENABLED, value ? 1 : 0);
-        }
         if (preference == mDozePreference) {
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), DOZE_ENABLED, value ? 1 : 0);
@@ -677,9 +650,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isAutomaticBrightnessAvailable(context.getResources())) {
                         result.add(KEY_AUTO_BRIGHTNESS);
-                    }
-                    if (!isLiftToWakeAvailable(context)) {
-                        result.add(KEY_LIFT_TO_WAKE);
                     }
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
