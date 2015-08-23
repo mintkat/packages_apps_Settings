@@ -1224,4 +1224,10 @@
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
     <string name="reset_lockscreen_wallpaper">Set to default</string>
 
+    <!--  Title for PreferenceScreen to replace encryption password [CHAR LIMIT=22]  -->
+    <string name="crypt_keeper_replace_password_title">Replace encryption password</string>
+
+    <!--  Summary for PreferenceScreen to replace encryption password [CHAR LIMIT=45]  -->
+    <string name="crypt_keeper_replace_password_summary">Remove the separate encryption password</string>
+
 </resources>
