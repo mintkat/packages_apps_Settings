@@ -21,8 +21,11 @@
     <FrameLayout
         android:id="@+id/privacy_guard_prefs"
         android:layout_width="match_parent"
-        android:background="@color/switchbar_background_color"
-        android:layout_height="@dimen/switchbar_height" />
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/background_color_darker_gray"/>
     <TextView
         android:id="@+id/error"
         android:layout_width="match_parent"
@@ -42,14 +45,8 @@
             android:drawSelectorOnTop="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="@dimen/settings_side_margin"
-            android:paddingEnd="@dimen/settings_side_margin"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1px"
-            android:fastScrollEnabled="true"
-            android:listSelector="@color/background_color_transparent"
             android:clipToPadding="false"
-            android:scrollbarStyle="outsideInset"
+            android:scrollbarStyle="@*android:integer/preference_fragment_scrollbarStyle"
             android:visibility="gone"/>
 
         <LinearLayout android:id="@+id/loading_container"
