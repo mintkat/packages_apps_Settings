@@ -1230,4 +1230,7 @@
     <!--  Summary for PreferenceScreen to replace encryption password [CHAR LIMIT=45]  -->
     <string name="crypt_keeper_replace_password_summary">Remove the separate encryption password</string>
 
+    <!-- Toast Icons -->
+    <string name="toast_icon_title">Toast icon</string>
+
 </resources>
