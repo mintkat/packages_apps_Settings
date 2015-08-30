@@ -52,6 +52,12 @@
         android:title="@string/system_category_xd">
 
         <PreferenceScreen
+            android:key="lockscreen_colors"
+            android:title="@string/lockscreen_colors"
+            android:summary="@string/lockscreen_colors_summary"
+            android:fragment="com.android.settings.xd.fragments.LockscreenColors" />
+
+        <PreferenceScreen
             android:key="lock_clock"
             android:title="@string/lock_clock_title"
             android:summary="@string/lock_clock_summary">
