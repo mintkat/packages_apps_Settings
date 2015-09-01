@@ -180,7 +180,7 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/build_number"
                 android:summary="@string/device_info_default"
-                android:selectable="false" />
+                android:selectable="true" />
 
         <!-- SELinux status information -->
         <Preference android:key="selinux_status"
