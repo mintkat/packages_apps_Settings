@@ -65,6 +65,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.HardwareRenderer;
 import android.view.IWindowManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Switch;
@@ -198,6 +201,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static String DEFAULT_LOG_RING_BUFFER_SIZE_IN_BYTES = "262144"; // 256K
 
     public static final String KEY_ADVANCED_MODE = "advanced_mode";
+
+    private static final int MENU_RESET = Menu.FIRST;
 
     SecureSettingSwitchPreference mAdvancedSettings;
 
@@ -455,6 +460,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
         mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
         mAllPrefs.add(mDevelopmentTools);
+
+        setHasOptionsMenu(true);
     }
 
     private ListPreference addListPreference(String prefKey) {
@@ -750,10 +757,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         resetVerifyAppsOverUsbOptions();
         resetDevelopmentShortcutOptions();
         resetUseNuplayerOptions();
-        writeAnimationScaleOption(0, mWindowAnimationScale, null);
-        writeAnimationScaleOption(1, mTransitionAnimationScale, null);
-        writeAnimationScaleOption(2, mAnimatorDurationScale, null);
-        writeAnimationScaleOption(3, mKillAppLongpressDelay, null);
         // Only poke the color space setting if we control it.
         if (usingDevelopmentColorSpace()) {
             writeSimulateColorSpace(-1);
@@ -2012,6 +2015,41 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             }
             return null;
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.reset)
+                .setIcon(R.drawable.ic_settings_reset)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                resetToDefault();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void resetToDefault() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(R.string.developer_options_reset_title);
+        alertDialog.setMessage(R.string.developer_options_reset_message);
+        alertDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                resetValues();
+            }
+        });
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.create().show();
+    }
+
+    private void resetValues() {
+       resetDangerousOptions();
     }
 
     /**

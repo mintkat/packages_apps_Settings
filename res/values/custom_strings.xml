@@ -1281,4 +1281,8 @@
     <string name="lockscreen_colors_reset_message">Are you sure you want to reset these colors to default?</string>
     <string name="yes">YES</string>
 
+    <!--Developer options reset -->
+    <string name="developer_options_reset_title">Reset Developer Options</string>
+    <string name="developer_options_reset_message">Are you sure you want to reset ALL these settings to default?</string>
+
 </resources>
