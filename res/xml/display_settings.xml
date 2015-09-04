@@ -91,12 +91,12 @@
         android:key="displaywakeup"
         android:title="@string/displaywakeup_label">
 
-        <!-- Prevent accidental wake-up -->
-        <SwitchPreference
+        <!-- Proximity check before wake -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                 android:key="proximity_on_wake"
                 android:title="@string/proximity_wake_title"
                 android:summary="@string/proximity_wake_summary"
-                settings:advanced="true"/>
+                android:defaultValue="false" />
 
         <!-- Double tap to wake -->
         <SwitchPreference
