@@ -16,6 +16,7 @@
 
 package com.android.settings.applications;
 
+import android.content.pm.ActivityInfo;
 import com.android.internal.telephony.ISms;
 import com.android.internal.telephony.SmsUsageMonitor;
 import com.android.settings.R;
