@@ -16,7 +16,7 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.euphoria.SeekBarPreference;
+import com.android.settings.xd.SeekBarPreference;
 
 public class NetworkTrafficSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {

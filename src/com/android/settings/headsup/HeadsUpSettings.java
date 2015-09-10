@@ -55,7 +55,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.cyanogenmod.BaseSystemSettingSwitchBar;
 import com.android.settings.cyanogenmod.PackageListAdapter;
 import com.android.settings.cyanogenmod.PackageListAdapter.PackageItem;
-import com.android.settings.euphoria.SeekBarPreference;
+import com.android.settings.xd.SeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -48,7 +48,7 @@ import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
-import com.android.settings.xd.SeekBarPreferenceCHOS;
+import com.android.settings.xd.SeekBarPreference;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -102,7 +102,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarTemperature;
     private ListPreference mStatusBarTemperatureStyle;
     private ColorPickerPreference mStatusBarTemperatureColor;
-    private SeekBarPreferenceCHOS mStatusBarTemperatureSize;
+    private SeekBarPreference mStatusBarTemperatureSize;
     private ListPreference mStatusBarTemperatureFontStyle;
 
     @Override
@@ -213,7 +213,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mStatusBarTemperatureColor.setSummary(hexColor);
             mStatusBarTemperatureColor.setNewPreviewColor(intColor);
 
-        mStatusBarTemperatureSize = (SeekBarPreferenceCHOS) findPreference(PREF_STATUS_BAR_WEATHER_SIZE);
+        mStatusBarTemperatureSize = (SeekBarPreference) findPreference(PREF_STATUS_BAR_WEATHER_SIZE);
         mStatusBarTemperatureSize.setValue(Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_WEATHER_SIZE, 14));
         mStatusBarTemperatureSize.setOnPreferenceChangeListener(this);
