@@ -1316,4 +1316,9 @@
     <string name="system_app_remover">System app remover</string>
     <string name="systemappremover_summary">Remove system apps by your own risk</string>
 
+    <!-- Lockscreen see through -->
+    <string name="lockscreen_see_through_title">Lockscreen blur</string>
+    <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen.</string>
+    <string name="lockscreen_blur_radius">Blur effect intensity</string> 
+
 </resources>
