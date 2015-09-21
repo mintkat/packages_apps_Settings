@@ -1253,6 +1253,8 @@
     <!-- Custom statusbar header -->
     <string name="status_bar_custom_header_title">Contextual status bar header</string>
     <string name="status_bar_custom_header_summary">Sets the background of the expanded status bar to an image based on the current date and time</string>
+    <string name="status_bar_custom_header_default_title">Use poly HD images</string>
+    <string name="status_bar_custom_header_default_summary">Enable for poly hd images. Disable for original images.</string>
 
     <!-- Lockscreen wallpaper -->
     <string name="lockscreen_wallpaper_title">Wallpaper</string>

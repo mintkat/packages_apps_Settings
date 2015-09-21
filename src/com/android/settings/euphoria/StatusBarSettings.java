@@ -81,6 +81,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String PREF_STATUS_BAR_WEATHER_COLOR = "status_bar_weather_color";
     private static final String PREF_STATUS_BAR_WEATHER_SIZE = "status_bar_weather_size";
     private static final String PREF_STATUS_BAR_WEATHER_FONT_STYLE = "status_bar_weather_font_style";
+    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
@@ -106,6 +107,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ColorPickerPreference mStatusBarTemperatureColor;
     private SeekBarPreference mStatusBarTemperatureSize;
     private ListPreference mStatusBarTemperatureFontStyle;
+    private SwitchPreference mCustomHeader;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -232,6 +234,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarTemperatureFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUS_BAR_WEATHER_FONT_STYLE, 0)));
         mStatusBarTemperatureFontStyle.setSummary(mStatusBarTemperatureFontStyle.getEntry());
+
+        // Status bar custom header hd
+        mCustomHeader = (SwitchPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
+        mCustomHeader.setOnPreferenceChangeListener(this);
 
         updateWeatherOptions();
 
@@ -408,6 +416,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_WEATHER_FONT_STYLE, val);
             mStatusBarTemperatureFontStyle.setSummary(mStatusBarTemperatureFontStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mCustomHeader) {
+           boolean value = (Boolean) newValue;
+           Settings.System.putInt(resolver,
+                   Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, value ? 1 : 0);
             return true;
         }
         return false;
