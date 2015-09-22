@@ -1251,6 +1251,7 @@
     <string name="volume_panel_time_out_15sec">15 seconds</string>
 
     <!-- Custom statusbar header -->
+    <string name="statusbar_header_title">Header</string>
     <string name="status_bar_custom_header_title">Contextual status bar header</string>
     <string name="status_bar_custom_header_summary">Sets the background of the expanded status bar to an image based on the current date and time</string>
     <string name="status_bar_custom_header_default_title">Use poly HD images</string>
