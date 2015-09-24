@@ -39,6 +39,7 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.xd.SeekBarPreference;
 
 import com.android.settings.Utils;
 
@@ -54,8 +55,10 @@ public class LockScreenExtras extends SettingsPreferenceFragment
         Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String TAG = "LockScreenExtras";
+    private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
 
     private PreferenceScreen mLockScreen;
+    private SeekBarPreference mBlurRadius;
 
     private Context mContext;
 
@@ -69,8 +72,12 @@ public class LockScreenExtras extends SettingsPreferenceFragment
         PackageManager pm = getPackageManager();
         Resources res = getResources();
         mContext = getActivity();
-
         mLockScreen = (PreferenceScreen) findPreference("lock_screen");
+
+        mBlurRadius = (SeekBarPreference) findPreference(KEY_LOCKSCREEN_BLUR_RADIUS);
+        mBlurRadius.setValue(Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_BLUR_RADIUS, 14));
+        mBlurRadius.setOnPreferenceChangeListener(this);
    
     }
 
@@ -94,7 +101,14 @@ public class LockScreenExtras extends SettingsPreferenceFragment
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+       ContentResolver resolver = getActivity().getContentResolver();
+       if (preference == mBlurRadius) {
+         int width = ((Integer)newValue).intValue();
+         Settings.System.putInt(resolver,
+                 Settings.System.LOCKSCREEN_BLUR_RADIUS, width);
+         return true;
+        }
         return false;
     }
 	
