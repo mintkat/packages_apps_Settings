@@ -54,7 +54,7 @@
     <string name="equalizer_settings_title">Equalizer</string>
     <string name="lmt_settings">Pie Controls</string>
     <string name="benzoblock_settings_title">Ad Blocker</string>
-    <string name="xd_button_title">Navigation &amp; HW</string>
+    <string name="xd_button_title">Hardware Keys</string>
     <string name="xd_launcher_settings">Launcher</string>
     <string name="xd_lockscreen_title">Lockscreen Extras</string>
     <string name="lockscreen_extras_message">Lockscreen Extras</string>
@@ -68,6 +68,7 @@
     <string name="weather_category_xd">Weather Settings</string>
     <string name="lockscreen_shortcuts_summary">Change the shortcuts on lockscreen to whatever you want</string>
     <string name="lockscreen_shortcuts_category">Shortcuts</string>
+    <string name="xd_navbar_title">Navigation Bar</string>
 
     <!-- GCC version info -->
     <string name="sm_android">Gcc android</string>

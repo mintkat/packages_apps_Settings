@@ -842,6 +842,21 @@
         <!-- SystemApp Remover -->
         <activity android:name="com.android.settings.xd.fragments.SystemappRemover" />
 
+        <!-- Navigation Bar Settings -->
+        <activity android:name="Settings$NavBarSettingsActivity"
+            android:label="@string/xd_navbar_title"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.xd.NavBarSettings" />
+        </activity>
+
+        <activity
+             android:name=".xd.NavBarSettings" />
+
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".applications.InstalledAppDetails"
                 android:label="@string/application_info_label"
