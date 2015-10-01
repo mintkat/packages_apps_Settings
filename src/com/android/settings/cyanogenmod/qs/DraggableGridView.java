@@ -53,7 +53,7 @@ public class DraggableGridView extends ViewGroup implements
     protected OnRearrangeListener mOnRearrangeListener;
     protected OnClickListener mSecondaryOnClickListener;
     private AdapterView.OnItemClickListener mOnItemClickListener;
-    private boolean mUseThreeTiles = false;
+    private boolean mUseLargerFirstRow = false;
     private int mDefaultColor;
 
     /**
@@ -102,8 +102,8 @@ public class DraggableGridView extends ViewGroup implements
         mDefaultColor = mContext.getResources().getColor(R.color.qs_tile_default_background_color);
     }
 
-    public void setUseThreeTiles(boolean threeTiles) {
-        mUseThreeTiles = threeTiles;
+    public void setUseLargeFirstRow(boolean largeFirstRow) {
+        // mUseLargerFirstRow = largeFirstRow;
     }
 
     protected void setListeners() {
@@ -166,7 +166,7 @@ public class DraggableGridView extends ViewGroup implements
                 Point xy = getCoordinateFromIndex(i);
                 int left = xy.x;
                 // If using main tiles and index == 0 or 1, we need to offset the tiles
-                if (!mUseThreeTiles && i < (COL_COUNT - 1)) {
+                if (mUseLargerFirstRow && i < (columnCount() - 1)) {
                     left += mChildSize / 2;
                 }
                 getChildAt(i).layout(left, xy.y, left + mChildSize, xy.y + mChildSize);
@@ -228,7 +228,7 @@ public class DraggableGridView extends ViewGroup implements
 
         index = row * columnCount() + col;
 
-        if (!mUseThreeTiles) {
+        if (mUseLargerFirstRow) {
             // If we click on (0, 2) and are using main tiles, that
             // position is empty
             if (row == 0 && col == columnCount() - 1) {
@@ -249,7 +249,7 @@ public class DraggableGridView extends ViewGroup implements
 
     protected int getColFromCoordinate(int row, int coordinate) {
         // If we are using main tiles, we have offset the click position
-        if (!mUseThreeTiles && row == 0) {
+        if (mUseLargerFirstRow && row == 0) {
             coordinate -= mChildSize / 2;
         }
         return getColOrRowFromCoordinate(coordinate - mLeftOffset);
@@ -301,7 +301,7 @@ public class DraggableGridView extends ViewGroup implements
         int col = index % columnCount();
         int row = index / columnCount();
 
-        if (!mUseThreeTiles) {
+        if (mUseLargerFirstRow) {
             // If on (0,2) and main tiles, (0,2) -> (1,0)
             if (row == 0 && col == columnCount() - 1) {
                 col = 0;
@@ -501,14 +501,14 @@ public class DraggableGridView extends ViewGroup implements
             Point newXY = getCoordinateFromIndex(newPos);
 
             int offsetOld = 0;
-            if (!mUseThreeTiles && oldPos < 2) {
+            if (mUseLargerFirstRow && oldPos < 2) {
                 offsetOld = mChildSize / 2;
             }
             Point oldOffset = new Point(oldXY.x + offsetOld - v.getLeft(),
                     oldXY.y - v.getTop());
 
             int offsetNew = 0;
-            if (!mUseThreeTiles && newPos < 2) {
+            if (mUseLargerFirstRow && newPos < 2) {
                 offsetNew = mChildSize / 2;
             }
             Point newOffset = new Point(newXY.x + offsetNew - v.getLeft(),
@@ -614,7 +614,7 @@ public class DraggableGridView extends ViewGroup implements
 
     protected int getMaxScroll() {
         int childCount = getChildCount();
-        if (childCount >= COL_COUNT && !mUseThreeTiles) {
+        if (childCount >= columnCount() && mUseLargerFirstRow) {
             childCount++;
         }
         int rowCount = (childCount + columnCount() - 1 /* round up */) / columnCount();
