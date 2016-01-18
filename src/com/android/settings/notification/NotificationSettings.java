@@ -90,6 +90,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_ZEN_ACCESS = "manage_zen_access";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_FINGERP_VIBRATE = "fingerprint_success_vib";
+    private static final String KEY_VIBRATION = "vibration";
 
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
@@ -129,6 +130,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private int mRingerMode = -1;
     private SwitchPreference mVolumeLinkNotification;
     private PreferenceCategory mSoundCategory;
+    private PreferenceCategory mVibrationCategory;
     private FingerprintManager mFingerprintManager;
     private SystemSettingSwitchPreference mFingerprintVib;
 
@@ -158,6 +160,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
         addPreferencesFromResource(R.xml.notification_settings);
         mSoundCategory = (PreferenceCategory) findPreference(KEY_SOUND);
+        mVibrationCategory = (PreferenceCategory) findPreference(KEY_VIBRATION);
 
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
                 com.android.internal.R.drawable.ic_audio_media_mute);
@@ -184,7 +187,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         }
 
         initRingtones(mSoundCategory);
-        initVibrateWhenRinging(mSoundCategory);
+        initVibrateWhenRinging(mVibrationCategory);
 
         final PreferenceCategory notification = (PreferenceCategory)
                 findPreference(KEY_NOTIFICATION);
