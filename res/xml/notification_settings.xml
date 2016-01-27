@@ -55,6 +55,12 @@
                 android:icon="@*android:drawable/ic_audio_notification_new"
                 android:title="@string/notification_volume_option_title" />
 
+        <!-- Also vibrate for calls -->
+        <SwitchPreference
+                android:key="vibrate_when_ringing"
+                android:title="@string/vibrate_when_ringing_title"
+                android:persistent="false" />
+
         <!-- Audio ducking -->
         <com.android.settings.preference.SecureSettingSwitchPreference
             android:key="zen_disable_ducking_during_media_playback"
@@ -101,8 +107,8 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="vibration"
-        android:title="@string/vibration_section_header" >
+        android:key="notification"
+        android:title="@string/notification_section_header" >
 
         <!-- Camera Duble-Tap vibration -->
         <com.android.settings.preference.SystemSettingSwitchPreference
@@ -117,19 +123,6 @@
                 android:title="@string/fprint_sucess_vib_title"
                 android:summary="@string/fprint_sucess_vib_summary"
                 android:defaultValue="true" />
-
-        <!-- Also vibrate for calls -->
-        <SwitchPreference
-                android:key="vibrate_when_ringing"
-                android:title="@string/vibrate_when_ringing_custom"
-                android:summary="@string/vibrate_when_ringing_summary"
-                android:persistent="false" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="notification"
-        android:title="@string/notification_section_header" >
 
         <!-- Pulse notification light -->
         <PreferenceScreen
