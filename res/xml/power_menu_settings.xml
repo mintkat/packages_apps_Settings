@@ -55,20 +55,20 @@
            android:title="@string/power_menu_airplane_title"
            android:defaultValue="true" />
 
-       <SwitchPreference
+       <!--SwitchPreference
            android:key="users"
            android:title="@string/power_menu_users_title"
-           android:defaultValue="false" />
+           android:defaultValue="false" /-->
 
-       <SwitchPreference
+       <!--SwitchPreference
            android:key="settings"
            android:title="@string/power_menu_settings_title"
-           android:defaultValue="false" />
+           android:defaultValue="false" /-->
 
-       <SwitchPreference
+       <!--SwitchPreference
            android:key="lockdown"
            android:title="@string/power_menu_lockdown_title"
-           android:defaultValue="false" />
+           android:defaultValue="false" /-->
 
     <!--SwitchPreference
         android:key="bugreport"
