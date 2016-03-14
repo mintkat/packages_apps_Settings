@@ -44,4 +44,7 @@
     <!-- Config to set default APN type when adding a new APN -->
     <string name="config_default_new_apn_type" translateable="false"></string>
 
+    <!-- When true enable color temperature setting. -->
+    <bool name="config_enableColorTemperature">false</bool>
+
 </resources>
