@@ -30,7 +30,6 @@ import android.content.pm.ServiceInfo;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
-import android.hardware.fingerprint.FingerprintManager;
 import android.media.AudioManager;
 import android.media.AudioSystem;
 import android.media.RingtoneManager;
@@ -89,7 +88,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String KEY_ZEN_MODE = "zen_mode";
-    private static final String KEY_FINGERP_VIBRATE = "fingerprint_success_vib";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
 
     private static final String[] RESTRICTED_KEYS = {
@@ -140,8 +138,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private int mRingerMode = -1;
     private SwitchPreference mVolumeLinkNotification;
     private PreferenceCategory mSoundCategory;
-    private FingerprintManager mFingerprintManager;
-    private SystemSettingSwitchPreference mFingerprintVib;
 
     private UserManager mUserManager;
 
@@ -159,7 +155,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mUserManager = UserManager.get(getContext());
         mVoiceCapable = Utils.isVoiceCapable(mContext);
         mSecure = new LockPatternUtils(getActivity()).isSecure(UserHandle.myUserId());
-        PreferenceScreen prefScreen = getPreferenceScreen();
 
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
@@ -188,11 +183,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             mSoundCategory.removePreference(mSoundCategory.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
         }
 
-        mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
-        mFingerprintVib = (SystemSettingSwitchPreference) findPreference(KEY_FINGERP_VIBRATE);
-        if (!mFingerprintManager.isHardwareDetected()){
-            prefScreen.removePreference(mFingerprintVib);
-        }
 
         initRingtones(mSoundCategory);
         initVibrateWhenRinging(mSoundCategory);
